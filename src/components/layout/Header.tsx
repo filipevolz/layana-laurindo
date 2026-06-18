@@ -1,5 +1,6 @@
 import { Menu } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
 import { WhatsAppLink } from '@/components/WhatsAppLink'
 import { Button } from '@/components/ui/button'
@@ -13,9 +14,40 @@ import {
 import { siteConfig } from '@/lib/site-config'
 import { cn } from '@/lib/utils'
 
+function NavLink({
+  href,
+  children,
+  className,
+  onClick,
+}: {
+  href: string
+  children: React.ReactNode
+  className?: string
+  onClick?: () => void
+}) {
+  const isHash = href.startsWith('#')
+  const to = isHash ? { pathname: '/', hash: href } : href
+
+  if (isHash || href.startsWith('/')) {
+    return (
+      <Link to={to} className={className} onClick={onClick}>
+        {children}
+      </Link>
+    )
+  }
+
+  return (
+    <a href={href} className={className} onClick={onClick}>
+      {children}
+    </a>
+  )
+}
+
 export function Header() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const { pathname } = useLocation()
+  const isHome = pathname === '/'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 48)
@@ -24,7 +56,7 @@ export function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const onHero = !scrolled
+  const onHero = isHome && !scrolled
 
   return (
     <header
@@ -36,7 +68,7 @@ export function Header() {
       )}
     >
       <div className="container-narrow flex h-16 items-center justify-between px-4 sm:h-[4.5rem] sm:px-6 lg:px-8">
-        <a href="#inicio" className="group flex items-center gap-3">
+        <Link to="/" className="group flex items-center gap-3">
           <span
             className={cn(
               'flex size-9 items-center justify-center rounded-full border text-xs font-bold',
@@ -66,14 +98,14 @@ export function Header() {
               Laurindo
             </span>
           </span>
-        </a>
+        </Link>
 
         <nav
           className="hidden items-center gap-8 lg:flex"
           aria-label="Navegação principal"
         >
           {siteConfig.nav.map((item) => (
-            <a
+            <NavLink
               key={item.href}
               href={item.href}
               className={cn(
@@ -84,7 +116,7 @@ export function Header() {
               )}
             >
               {item.label}
-            </a>
+            </NavLink>
           ))}
         </nav>
 
@@ -124,14 +156,14 @@ export function Header() {
             </SheetHeader>
             <nav className="mt-8 flex flex-col gap-1" aria-label="Menu mobile">
               {siteConfig.nav.map((item) => (
-                <a
+                <NavLink
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
                   className="rounded-lg px-2 py-3 -mx-2 text-lg font-medium text-foreground/80 transition-colors hover-fine:bg-brand/5 hover-fine:text-brand"
                 >
                   {item.label}
-                </a>
+                </NavLink>
               ))}
               <WhatsAppLink
                 message={siteConfig.defaultWhatsAppMessage}

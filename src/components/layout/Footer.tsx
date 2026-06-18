@@ -1,4 +1,7 @@
+import { Link } from 'react-router-dom'
+
 import { buildWhatsAppUrl, siteConfig } from '@/lib/site-config'
+import { landingPages } from '@/lib/landing-pages'
 
 function FooterColumn({
   title,
@@ -20,26 +23,48 @@ function FooterColumn({
 function FooterLinkList({
   items,
 }: {
-  items: readonly { label: string; href: string }[]
+  items: readonly { label: string; href: string; external?: boolean }[]
 }) {
   return (
     <ul className="space-y-2.5">
       {items.map((item) => (
         <li key={item.href}>
-          <a
-            href={item.href}
-            className="text-sm text-muted-foreground transition-colors hover:text-brand"
-            {...(item.href.startsWith('http')
-              ? { target: '_blank', rel: 'noopener noreferrer' }
-              : {})}
-          >
-            {item.label}
-          </a>
+          {item.external || item.href.startsWith('http') ? (
+            <a
+              href={item.href}
+              className="text-sm text-muted-foreground transition-colors hover:text-brand"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {item.label}
+            </a>
+          ) : item.href.startsWith('#') ? (
+            <Link
+              to={{ pathname: '/', hash: item.href }}
+              className="text-sm text-muted-foreground transition-colors hover:text-brand"
+            >
+              {item.label}
+            </Link>
+          ) : (
+            <Link
+              to={item.href}
+              className="text-sm text-muted-foreground transition-colors hover:text-brand"
+            >
+              {item.label}
+            </Link>
+          )}
         </li>
       ))}
     </ul>
   )
 }
+
+const areaLinks = landingPages
+  .filter((page) => page.type === 'area')
+  .map((page) => ({
+    label: page.breadcrumbLabel,
+    href: page.path,
+  }))
 
 export function Footer() {
   const year = new Date().getFullYear()
@@ -47,9 +72,9 @@ export function Footer() {
   return (
     <footer className="safe-bottom border-t border-brand/15 bg-services text-foreground">
       <div className="container-narrow section-padding">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5 lg:gap-8">
           <FooterColumn>
-            <a href="#inicio" className="group inline-flex items-center gap-3">
+            <Link to="/" className="group inline-flex items-center gap-3">
               <span
                 className="flex size-9 items-center justify-center rounded-full border border-brand/25 text-xs font-bold text-brand"
                 aria-hidden="true"
@@ -64,7 +89,7 @@ export function Footer() {
                   Laurindo
                 </span>
               </span>
-            </a>
+            </Link>
             <p className="text-sm leading-relaxed text-muted-foreground">
               {siteConfig.description} Atendimento em {siteConfig.city} e em
               todo o Brasil — presencial ou online.
@@ -78,8 +103,17 @@ export function Footer() {
             <FooterLinkList items={siteConfig.nav} />
           </FooterColumn>
 
+          <FooterColumn title="Áreas de atuação">
+            <FooterLinkList items={areaLinks} />
+          </FooterColumn>
+
           <FooterColumn title="Links úteis">
-            <FooterLinkList items={siteConfig.usefulLinks} />
+            <FooterLinkList
+              items={siteConfig.usefulLinks.map((link) => ({
+                ...link,
+                external: true,
+              }))}
+            />
           </FooterColumn>
 
           <FooterColumn title="Contato">
@@ -169,6 +203,9 @@ export function Footer() {
         <div className="mt-10 border-t border-brand/15 pt-6 text-xs leading-relaxed text-muted-foreground">
           <p>
             © {year} {siteConfig.name}. Todos os direitos reservados.
+          </p>
+          <p className="mt-2">
+            Atualizado em {siteConfig.seo.updatedAtLabel}.
           </p>
           <p className="mt-2">
             Este site tem caráter informativo e não substitui consulta jurídica

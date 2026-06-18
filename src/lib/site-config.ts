@@ -28,6 +28,21 @@ export interface ServiceCategory {
 }
 
 export const siteConfig = {
+  seo: {
+    siteUrl: 'https://layanalaurindo.com.br',
+    siteName: 'Layana Laurindo — Advocacia',
+    defaultTitle: 'Layana Laurindo | Advogada — Direito Civil e de Família',
+    defaultDescription:
+      'Layana Laurindo, advogada em Florianópolis. Atuação em Direito Civil, Direito de Família, Curatela e Sucessões. Agende sua consulta pelo WhatsApp.',
+    ogDescription:
+      'Orientação jurídica clara e humanizada. Divórcio, guarda, pensão, inventário, curatela, contratos e mais. Fale pelo WhatsApp.',
+    ogImage: '/images/layana-hero-683w.webp',
+    ogImageAlt: 'Layana Laurindo, advogada em Florianópolis',
+    locale: 'pt_BR',
+    themeColor: '#1a3a2f',
+    updatedAt: '2026-06-01',
+    updatedAtLabel: 'junho de 2026',
+  },
   name: 'Layana Laurindo',
   title: 'Advogada',
   tagline:
@@ -136,6 +151,18 @@ export const siteConfig = {
       title: 'Ética e confidencialidade',
       description:
         'Sigilo profissional e conduta alinhada às normas da OAB em todas as interações.',
+    },
+    {
+      id: 'experiencia',
+      title: 'Experiência consolidada',
+      description:
+        'Mais de 10 anos de atuação e centenas de casos em Direito Civil, Família, Curatela e Sucessões — com análise técnica e histórico de resultados.',
+    },
+    {
+      id: 'modalidade',
+      title: 'Presencial e online',
+      description:
+        'Atendimento no bairro Canto, em Florianópolis, ou por videoconferência para clientes em Santa Catarina e em todo o Brasil.',
     },
   ],
   testimonialsSection: {

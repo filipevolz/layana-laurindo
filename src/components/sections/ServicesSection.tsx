@@ -1,4 +1,5 @@
 import { ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 import { GoldBorderCard } from '@/components/GoldBorderCard'
 import { Reveal } from '@/components/Reveal'
@@ -16,6 +17,13 @@ import {
   type ServiceSubcategory,
 } from '@/lib/site-config'
 import { cn } from '@/lib/utils'
+
+const areaLandingPaths: Record<string, string> = {
+  civil: '/advogada-direito-civil-florianopolis',
+  familia: '/advogada-direito-de-familia-florianopolis',
+  curatela: '/advogada-curatela-florianopolis',
+  sucessoes: '/advogada-inventario-florianopolis',
+}
 
 function ServiceItemsList({ items }: { items: readonly string[] }) {
   return (
@@ -146,7 +154,21 @@ function ServiceCard({
           <ServiceCardContent category={category} />
         </div>
 
-        <ServiceCardLink category={category} />
+        <div className="mt-5 flex flex-wrap items-center gap-4">
+          {areaLandingPaths[category.id] && (
+            <Link
+              to={areaLandingPaths[category.id]}
+              className="-my-2 inline-flex items-center gap-1 py-2 text-sm font-semibold text-brand transition-colors hover:text-brand-accent"
+            >
+              Ver página completa
+              <ArrowRight
+                className="size-3.5 transition-transform group-hover:translate-x-0.5"
+                aria-hidden="true"
+              />
+            </Link>
+          )}
+          <ServiceCardLink category={category} />
+        </div>
       </CardContent>
       </GoldBorderCard>
     </Reveal>

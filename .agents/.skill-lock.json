@@ -28,6 +28,90 @@
       ],
       "method": "copy",
       "global": false
+    },
+    "expansion-retention": {
+      "name": "expansion-retention",
+      "source": "local",
+      "contentHash": "e5420a123058969e8e5014d74120daf7a1c598e1fb44e6d152c6b60a71a81e95",
+      "installedAt": "2026-06-18T19:49:51.821Z",
+      "updatedAt": "2026-06-18T19:49:51.856Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "windsurf"
+      ],
+      "method": "copy",
+      "global": false
+    },
+    "gtm-engineering": {
+      "name": "gtm-engineering",
+      "source": "local",
+      "contentHash": "b2cfbea2da9f2a52527f6c41f128df2dba76c33df90692357a5533c06b78223f",
+      "installedAt": "2026-06-18T19:49:59.269Z",
+      "updatedAt": "2026-06-18T19:49:59.277Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "windsurf"
+      ],
+      "method": "copy",
+      "global": false
+    },
+    "gtm-metrics": {
+      "name": "gtm-metrics",
+      "source": "local",
+      "contentHash": "9f2afa96826b0456cf79f05b43ab4470fd6802990e301bb898c2cbaa6f01cf5c",
+      "installedAt": "2026-06-18T19:50:05.733Z",
+      "updatedAt": "2026-06-18T19:50:05.810Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "windsurf"
+      ],
+      "method": "copy",
+      "global": false
+    },
+    "ai-ugc-ads": {
+      "name": "ai-ugc-ads",
+      "source": "local",
+      "contentHash": "92f981122d6add656bd10cae4404fa94a79db93f3cad2cd978ef12a4eea51b83",
+      "installedAt": "2026-06-18T19:50:26.361Z",
+      "updatedAt": "2026-06-18T19:50:26.494Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "windsurf"
+      ],
+      "method": "copy",
+      "global": false
+    },
+    "ai-sdr": {
+      "name": "ai-sdr",
+      "source": "local",
+      "contentHash": "3f36a4b65cb1fc97722341b9fb1849fcecf320be8a1d8892028fa45663719786",
+      "installedAt": "2026-06-18T19:50:45.379Z",
+      "updatedAt": "2026-06-18T19:50:45.396Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "windsurf"
+      ],
+      "method": "copy",
+      "global": false
+    },
+    "ai-seo": {
+      "name": "ai-seo",
+      "source": "local",
+      "contentHash": "8ff9c7d6181c37c92fb225a8559d50ee5413c20e6a7ae240e05bb6a532d64f9b",
+      "installedAt": "2026-06-18T19:53:27.600Z",
+      "updatedAt": "2026-06-18T19:53:27.633Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "windsurf"
+      ],
+      "method": "copy",
+      "global": false
     }
   }
 }
