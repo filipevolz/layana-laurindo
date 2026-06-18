@@ -1,9 +1,13 @@
 import { ArrowRight, MessageCircle } from 'lucide-react'
 
+import { GoldBorderCard } from '@/components/GoldBorderCard'
+import { Reveal } from '@/components/Reveal'
+import { ResponsiveImage } from '@/components/ResponsiveImage'
 import { WhatsAppLink } from '@/components/WhatsAppLink'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
+import { CardContent } from '@/components/ui/card'
+import { responsiveImages } from '@/lib/responsive-images'
 import { siteConfig } from '@/lib/site-config'
 
 export function HeroSection() {
@@ -23,7 +27,7 @@ export function HeroSection() {
             <div className="fade-in-up-delay-1 space-y-4">
               <h1
                 id="hero-heading"
-                className="max-w-xl font-display text-4xl leading-[1.1] font-bold tracking-tight text-brand text-balance sm:text-5xl lg:text-[3.25rem]"
+                className="text-hero-title max-w-xl font-display leading-[1.1] font-bold tracking-tight text-brand text-balance"
               >
                 {siteConfig.hero.headline}
               </h1>
@@ -36,7 +40,7 @@ export function HeroSection() {
               <WhatsAppLink
                 message={siteConfig.defaultWhatsAppMessage}
                 showIcon={false}
-                className="h-12 border-0 bg-primary px-6 text-sm font-bold tracking-wide text-primary-foreground uppercase hover:bg-primary/90"
+                className="h-12 w-full border-0 bg-primary px-6 text-sm font-bold tracking-wide text-primary-foreground uppercase hover:bg-primary/90 sm:w-auto"
               >
                 <MessageCircle className="size-4" aria-hidden="true" />
                 Falar com uma advogada
@@ -45,9 +49,9 @@ export function HeroSection() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="btn-press h-12 border-brand/35 bg-transparent px-6 text-sm font-semibold text-brand uppercase hover:bg-brand/5 hover:text-brand"
+                className="btn-press h-12 w-full border-brand/35 bg-transparent px-6 text-sm font-semibold text-brand uppercase hover:bg-brand/5 hover:text-brand sm:w-auto"
               >
-                <a href="#servicos" className="inline-flex items-center gap-2">
+                <a href="#servicos" className="inline-flex items-center justify-center gap-2">
                   Ver áreas de atuação
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </a>
@@ -56,33 +60,35 @@ export function HeroSection() {
           </div>
 
           <div className="flex min-h-0 items-center justify-center py-2 lg:py-0">
-            <img
-              src={siteConfig.images.hero}
-              alt="Layana Laurindo, advogada, retrato profissional com fundo de madeira"
-              className="hero-portrait rounded-lg"
-              width={408}
-              height={612}
-              fetchPriority="high"
-            />
+            <Reveal variant="right" delay={200} immediate>
+              <ResponsiveImage
+                {...responsiveImages.hero}
+                alt="Layana Laurindo, advogada, retrato profissional com fundo de madeira"
+                className="hero-portrait rounded-lg"
+                fetchPriority="high"
+              />
+            </Reveal>
           </div>
         </div>
       </div>
 
       <div className="shrink-0 px-4 pb-5 sm:px-6 sm:pb-6 lg:px-8">
         <div className="container-narrow">
-          <dl className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
-            {siteConfig.hero.stats.map((stat) => (
-              <Card
-                key={stat.label}
-                className="border-brand/15 bg-card/95 shadow-sm ring-brand/10 backdrop-blur-sm transition-shadow hover:shadow-md"
-              >
-                <CardContent className="flex flex-col items-center justify-center py-5 text-center sm:py-6">
-                  <dt className="hero-stat-value text-brand">{stat.value}</dt>
-                  <dd className="hero-stat-label mt-2 text-muted-foreground">
-                    {stat.label}
-                  </dd>
-                </CardContent>
-              </Card>
+          <dl className="grid grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-4">
+            {siteConfig.hero.stats.map((stat, index) => (
+              <Reveal key={stat.label} variant="up" staggerIndex={index} immediate className="h-full">
+                <GoldBorderCard
+                  animationIndex={index}
+                  className="bg-card/95 backdrop-blur-sm"
+                >
+                  <CardContent className="flex flex-col items-center justify-center px-2 py-4 text-center sm:px-4 sm:py-6">
+                    <dt className="hero-stat-value text-brand">{stat.value}</dt>
+                    <dd className="hero-stat-label mt-1.5 text-xs text-muted-foreground sm:mt-2 sm:text-[inherit]">
+                      {stat.label}
+                    </dd>
+                  </CardContent>
+                </GoldBorderCard>
+              </Reveal>
             ))}
           </dl>
         </div>

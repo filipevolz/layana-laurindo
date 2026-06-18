@@ -29,7 +29,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        'fixed inset-x-0 top-0 z-50 transition-colors duration-300',
+        'safe-top fixed inset-x-0 top-0 z-50 transition-colors duration-300',
         onHero
           ? 'border-b border-brand/15 bg-services '
           : 'border-b border-border/60 bg-background/95 backdrop-blur-sm',
@@ -77,10 +77,10 @@ export function Header() {
               key={item.href}
               href={item.href}
               className={cn(
-                'text-sm font-medium transition-colors',
+                'nav-link py-1 text-sm font-medium transition-colors duration-300',
                 onHero
-                  ? 'text-brand hover:text-brand'
-                  : 'text-foreground hover:text-brand',
+                  ? 'text-brand/85 hover-fine:text-brand-dark'
+                  : 'text-foreground/85 hover-fine:text-brand',
               )}
             >
               {item.label}
@@ -105,9 +105,10 @@ export function Header() {
           <SheetTrigger asChild className="lg:hidden">
             <Button
               variant="outline"
-              size="icon"
+              size="icon-lg"
               aria-label="Abrir menu"
               className={cn(
+                'min-h-11 min-w-11 touch-manipulation',
                 onHero &&
                   'border-brand/30 bg-transparent text-brand hover:bg-brand/5 hover:text-brand',
               )}
@@ -121,13 +122,13 @@ export function Header() {
                 {siteConfig.name}
               </SheetTitle>
             </SheetHeader>
-            <nav className="mt-8 flex flex-col gap-4" aria-label="Menu mobile">
+            <nav className="mt-8 flex flex-col gap-1" aria-label="Menu mobile">
               {siteConfig.nav.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="text-lg font-medium text-foreground/80 transition-colors hover:text-brand"
+                  className="rounded-lg px-2 py-3 -mx-2 text-lg font-medium text-foreground/80 transition-colors hover-fine:bg-brand/5 hover-fine:text-brand"
                 >
                   {item.label}
                 </a>

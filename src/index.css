@@ -4,6 +4,7 @@
 @import 'shadcn/tailwind.css';
 
 @custom-variant dark (&:is(.dark *));
+@custom-variant hover-fine (@media (hover: hover) and (pointer: fine));
 
 @theme inline {
   --font-display: 'Cormorant Garamond', Georgia, serif;
@@ -73,6 +74,13 @@
   --ceramic: #fff3e0;
 
   --header-height: 4rem;
+
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-enter: 600ms;
+  --reveal-distance: 18px;
+  --stagger-step: 45ms;
 }
 
 @media (min-width: 640px) {
@@ -107,6 +115,8 @@
 
   body {
     @apply bg-background font-sans text-foreground antialiased;
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
     letter-spacing: -0.01em;
   }
 
@@ -131,7 +141,28 @@
   }
 
   .section-padding {
-    @apply px-4 py-8 sm:px-6 sm:py-12 lg:px-6 lg:py-16;
+    @apply px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16;
+  }
+
+  .safe-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-x {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  .text-section-title {
+    font-size: clamp(1.75rem, 4vw + 0.5rem, 2.5rem);
+  }
+
+  .text-hero-title {
+    font-size: clamp(2rem, 5vw + 0.75rem, 3.25rem);
   }
 
   .container-narrow {
@@ -144,8 +175,8 @@
 
   .hero-viewport {
     margin-top: var(--header-height);
-    height: calc(100vh - var(--header-height));
     min-height: calc(100vh - var(--header-height));
+    min-height: calc(100dvh - var(--header-height));
   }
 
   .bg-hero-stats {
@@ -172,6 +203,13 @@
     .hero-portrait {
       max-height: min(70vh, 580px);
       max-width: 420px;
+    }
+  }
+
+  @media (max-height: 640px) {
+    .hero-portrait {
+      max-height: min(40vh, 280px);
+      max-width: min(70%, 240px);
     }
   }
 
@@ -208,25 +246,176 @@
   }
 
   .fade-in-up {
-    animation: fadeInUp 0.7s ease-out both;
+    animation: fadeInUp var(--duration-enter) var(--ease-out-quart) both;
   }
 
   .fade-in-up-delay-1 {
-    animation: fadeInUp 0.7s ease-out 0.1s both;
+    animation: fadeInUp var(--duration-enter) var(--ease-out-quart) 0.1s both;
   }
 
   .fade-in-up-delay-2 {
-    animation: fadeInUp 0.7s ease-out 0.2s both;
+    animation: fadeInUp var(--duration-enter) var(--ease-out-quart) 0.2s both;
   }
 
   @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(var(--reveal-distance));
     }
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  .reveal {
+    opacity: 0;
+    transition:
+      opacity var(--duration-enter) var(--ease-out-quart),
+      transform var(--duration-enter) var(--ease-out-quart);
+  }
+
+  .reveal-up {
+    transform: translateY(var(--reveal-distance));
+  }
+
+  .reveal-left {
+    transform: translateX(calc(var(--reveal-distance) * -1));
+  }
+
+  .reveal-right {
+    transform: translateX(var(--reveal-distance));
+  }
+
+  .reveal-scale {
+    transform: scale(0.98);
+  }
+
+  .reveal-stagger {
+    transition-delay: calc(var(--i, 0) * var(--stagger-step));
+  }
+
+  .reveal-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .card-lift {
+    transition:
+      transform var(--duration-normal) var(--ease-out-quart),
+      box-shadow var(--duration-normal) var(--ease-out-quart);
+  }
+
+  @property --border-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  .gold-border-shell {
+    --border-angle: 0deg;
+    position: relative;
+    border-radius: var(--radius-xl);
+    padding: 1.5px;
+    background: conic-gradient(
+      from var(--border-angle),
+      color-mix(in srgb, var(--brand) 14%, transparent) 0deg 235deg,
+      color-mix(in srgb, var(--brand) 28%, transparent) 250deg,
+      var(--brand) 278deg,
+      color-mix(in srgb, var(--brand) 82%, white) 294deg,
+      var(--brand-accent) 310deg,
+      color-mix(in srgb, var(--brand) 35%, transparent) 326deg,
+      color-mix(in srgb, var(--brand) 14%, transparent) 360deg
+    );
+    animation: gold-border-worm 3.6s linear infinite;
+    transition:
+      background var(--duration-normal) var(--ease-out-quart),
+      box-shadow var(--duration-normal) var(--ease-out-quart);
+  }
+
+  .gold-border-shell--featured {
+    background: conic-gradient(
+      from var(--border-angle),
+      color-mix(in srgb, var(--brand) 22%, transparent) 0deg 228deg,
+      color-mix(in srgb, var(--brand) 38%, transparent) 245deg,
+      var(--brand) 272deg,
+      color-mix(in srgb, var(--brand) 88%, white) 290deg,
+      var(--brand-accent) 306deg,
+      color-mix(in srgb, var(--brand) 45%, transparent) 322deg,
+      color-mix(in srgb, var(--brand) 22%, transparent) 360deg
+    );
+    animation-duration: 3s;
+  }
+
+  @keyframes gold-border-worm {
+    to {
+      --border-angle: 360deg;
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .gold-border-shell:hover {
+      animation: none;
+      background: linear-gradient(
+        135deg,
+        var(--brand-dark),
+        var(--brand),
+        color-mix(in srgb, var(--brand) 72%, white),
+        var(--brand-accent),
+        var(--brand)
+      );
+      box-shadow:
+        0 0 0 1px color-mix(in srgb, var(--brand) 14%, transparent),
+        0 8px 28px color-mix(in srgb, var(--brand) 18%, transparent);
+    }
+
+    .gold-border-shell--featured:hover {
+      box-shadow:
+        0 0 0 1px color-mix(in srgb, var(--brand) 22%, transparent),
+        0 10px 32px color-mix(in srgb, var(--brand) 24%, transparent);
+    }
+  }
+
+  .gold-border-inner {
+    border-radius: calc(var(--radius-xl) - 1.5px);
+  }
+
+  .nav-link {
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--duration-normal) var(--ease-out-quart);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .nav-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  }
+
+  .fab-enter {
+    animation: fabEnter var(--duration-enter) var(--ease-out-quart) 800ms both;
+  }
+
+  @keyframes fabEnter {
+    from {
+      opacity: 0;
+      transform: scale(0.92);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
     }
   }
 }

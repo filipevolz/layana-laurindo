@@ -1,8 +1,9 @@
 import { ArrowRight } from 'lucide-react'
 
+import { GoldBorderCard } from '@/components/GoldBorderCard'
+import { Reveal } from '@/components/Reveal'
 import { Badge } from '@/components/ui/badge'
 import {
-  Card,
   CardContent,
   CardHeader,
   CardTitle,
@@ -79,7 +80,7 @@ function ServiceCardLink({ category }: { category: ServiceCategory }) {
       href={buildWhatsAppUrl(category.message)}
       target="_blank"
       rel="noopener noreferrer"
-      className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-brand transition-colors hover:text-brand-accent"
+      className="mt-5 -my-2 inline-flex items-center gap-1 py-2 text-sm font-semibold text-brand transition-colors hover:text-brand-accent"
     >
       Saiba mais
       <ArrowRight
@@ -90,17 +91,34 @@ function ServiceCardLink({ category }: { category: ServiceCategory }) {
   )
 }
 
-function ServiceCard({ category }: { category: ServiceCategory }) {
+function ServiceCard({
+  category,
+  index,
+}: {
+  category: ServiceCategory
+  index: number
+}) {
   const Icon = serviceIcons[category.id]
 
   return (
-    <Card
-      className={cn(
-        'group flex h-full flex-col border-brand/15 shadow-sm transition-shadow hover:shadow-md',
-        category.featured && 'border-brand/25 ring-1 ring-brand/10 sm:col-span-2',
-      )}
+    <Reveal
+      variant="up"
+      staggerIndex={index}
+      className={cn('h-full', category.featured && 'sm:col-span-2')}
     >
-      <CardHeader className="flex flex-row items-start justify-between gap-3">
+      <GoldBorderCard
+        animationIndex={index}
+        featured={category.featured}
+        className="flex h-full flex-col"
+      >
+          <CardHeader
+        className={cn(
+          'flex items-start justify-between gap-3',
+          category.featured
+            ? 'flex-col sm:flex-row sm:items-start'
+            : 'flex-row',
+        )}
+      >
         <div className="flex items-center gap-2">
           {Icon && (
             <Icon
@@ -130,7 +148,8 @@ function ServiceCard({ category }: { category: ServiceCategory }) {
 
         <ServiceCardLink category={category} />
       </CardContent>
-    </Card>
+      </GoldBorderCard>
+    </Reveal>
   )
 }
 
@@ -138,17 +157,18 @@ export function ServicesSection() {
   return (
     <section
       id="servicos"
-      className="bg-background py-16 sm:py-20 lg:py-24"
+      className="section-padding bg-background"
       aria-labelledby="services-heading"
     >
-      <div className="container-narrow mb-10 px-4 sm:mb-12 sm:px-6 lg:px-8">
-        <div className="mb-6 flex flex-col items-center space-y-4 text-center">
+      <div className="container-narrow mb-10 sm:mb-12">
+        <Reveal variant="up">
+          <div className="mb-6 flex flex-col items-center space-y-4 text-center">
           <Badge className="rounded-full bg-brand/10 font-bold text-brand hover:bg-brand/15">
             Serviços
           </Badge>
           <h2
             id="services-heading"
-            className="font-display mx-auto max-w-2xl text-3xl text-brand sm:text-4xl"
+            className="text-section-title font-display mx-auto max-w-2xl text-brand"
           >
             {siteConfig.servicesSection.title}
           </h2>
@@ -156,12 +176,13 @@ export function ServicesSection() {
             {siteConfig.servicesSection.description}
           </p>
         </div>
+        </Reveal>
       </div>
 
-      <div className="container-narrow px-4 sm:px-6 lg:px-8">
+      <div className="container-narrow">
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
-          {siteConfig.serviceCategories.map((category) => (
-            <ServiceCard key={category.id} category={category} />
+          {siteConfig.serviceCategories.map((category, index) => (
+            <ServiceCard key={category.id} category={category} index={index} />
           ))}
         </div>
       </div>

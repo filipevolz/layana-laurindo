@@ -1,8 +1,10 @@
 import { Star } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
+import { GoldBorderCard } from '@/components/GoldBorderCard'
+import { Reveal } from '@/components/Reveal'
 import { Badge } from '@/components/ui/badge'
-import { Card, CardContent } from '@/components/ui/card'
+import { CardContent } from '@/components/ui/card'
 import {
   Carousel,
   type CarouselApi,
@@ -57,9 +59,15 @@ function StarRating({ rating }: { rating: number }) {
   )
 }
 
-function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
+function TestimonialCard({
+  testimonial,
+  index,
+}: {
+  testimonial: Testimonial
+  index: number
+}) {
   return (
-    <Card className="h-full border-brand/15 shadow-sm">
+    <GoldBorderCard animationIndex={index} className="h-full">
       <CardContent className="flex h-full flex-col gap-4 pt-6">
         <StarRating rating={testimonial.rating} />
         <blockquote className="flex-1 text-sm leading-relaxed text-foreground/85">
@@ -77,7 +85,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
           </cite>
         </footer>
       </CardContent>
-    </Card>
+    </GoldBorderCard>
   )
 }
 
@@ -111,44 +119,51 @@ function TestimonialsCarousel() {
           align: 'start',
           loop: true,
         }}
-        className="w-full px-10 sm:px-12"
+        className="w-full px-12 sm:px-14"
         aria-label="Depoimentos de clientes"
       >
         <CarouselContent>
-          {testimonials.map((testimonial) => (
+          {testimonials.map((testimonial, index) => (
             <CarouselItem
               key={testimonial.id}
               className="md:basis-1/2 lg:basis-1/3"
             >
-              <TestimonialCard testimonial={testimonial} />
+              <TestimonialCard testimonial={testimonial} index={index} />
             </CarouselItem>
           ))}
         </CarouselContent>
 
         <CarouselPrevious
-          className="left-1 border-brand/20 bg-card shadow-sm sm:left-2"
+          size="icon"
+          className="left-0 size-10 border-brand/20 bg-card shadow-sm sm:left-1 sm:size-11"
           aria-label="Depoimento anterior"
         />
         <CarouselNext
-          className="right-1 border-brand/20 bg-card shadow-sm sm:right-2"
+          size="icon"
+          className="right-0 size-10 border-brand/20 bg-card shadow-sm sm:right-1 sm:size-11"
           aria-label="Próximo depoimento"
         />
       </Carousel>
 
       {testimonials.length > 1 && (
-        <div className="mt-6 flex items-center justify-center gap-2">
+        <div className="mt-6 flex items-center justify-center gap-1">
           {testimonials.map((testimonial, index) => (
             <button
               key={testimonial.id}
               type="button"
-              className={cn(
-                'size-2.5 rounded-full transition-colors',
-                index === current ? 'bg-brand' : 'bg-brand/25 hover:bg-brand/40',
-              )}
+              className="flex min-h-11 min-w-11 touch-manipulation items-center justify-center"
               onClick={() => api?.scrollTo(index)}
               aria-label={`Ir para depoimento ${index + 1}`}
               aria-current={index === current ? 'true' : undefined}
-            />
+            >
+              <span
+                className={cn(
+                  'size-2.5 rounded-full transition-colors',
+                  index === current ? 'bg-brand' : 'bg-brand/25 hover-fine:bg-brand/40',
+                )}
+                aria-hidden="true"
+              />
+            </button>
           ))}
         </div>
       )}
@@ -163,14 +178,15 @@ export function TestimonialsSection() {
       className="section-padding bg-hero"
       aria-labelledby="testimonials-heading"
     >
-      <div className="container-narrow px-4 sm:px-6 lg:px-8">
-        <div className="mb-8 flex flex-col items-center space-y-4 text-center sm:mb-10">
+      <div className="container-narrow">
+        <Reveal variant="up">
+          <div className="mb-8 flex flex-col items-center space-y-4 text-center sm:mb-10">
           <Badge className="rounded-full bg-brand/10 font-bold text-brand hover:bg-brand/15">
             Depoimentos
           </Badge>
           <h2
             id="testimonials-heading"
-            className="font-display mx-auto max-w-2xl text-3xl text-brand sm:text-4xl"
+            className="text-section-title font-display mx-auto max-w-2xl text-brand"
           >
             {siteConfig.testimonialsSection.title}
           </h2>
@@ -178,8 +194,11 @@ export function TestimonialsSection() {
             {siteConfig.testimonialsSection.description}
           </p>
         </div>
+        </Reveal>
 
-        <TestimonialsCarousel />
+        <Reveal variant="up" delay={100}>
+          <TestimonialsCarousel />
+        </Reveal>
       </div>
     </section>
   )

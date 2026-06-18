@@ -45,7 +45,7 @@ export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-brand/15 bg-services text-foreground">
+    <footer className="safe-bottom border-t border-brand/15 bg-services text-foreground">
       <div className="container-narrow section-padding">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           <FooterColumn>
@@ -159,7 +159,7 @@ export function Footer() {
           <iframe
             src={siteConfig.address.mapsEmbedUrl}
             title="Localização do escritório no mapa"
-            className="h-52 w-full sm:h-60"
+            className="h-48 w-full sm:h-56 md:h-64"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             allowFullScreen
