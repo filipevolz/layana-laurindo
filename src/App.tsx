@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react'
 import { AboutSection } from '@/components/sections/AboutSection'
 import { ContactSection } from '@/components/sections/ContactSection'
 import { FaqSection } from '@/components/sections/FaqSection'
@@ -24,6 +25,7 @@ function App() {
       </main>
       <Footer />
       <WhatsAppButton />
+      <Analytics />
     </>
   )
 }
