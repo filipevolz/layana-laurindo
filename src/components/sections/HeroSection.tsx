@@ -1,7 +1,9 @@
 import { ArrowRight, MessageCircle } from 'lucide-react'
 
 import { WhatsAppLink } from '@/components/WhatsAppLink'
+import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
 import { siteConfig } from '@/lib/site-config'
 
 export function HeroSection() {
@@ -14,9 +16,9 @@ export function HeroSection() {
       <div className="container-narrow flex min-h-0 flex-1 flex-col px-4 sm:px-6 lg:px-8">
         <div className="grid min-h-0 flex-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
           <div className="z-10 flex flex-col justify-center space-y-6 py-4 lg:py-0">
-            <p className="fade-in-up text-xs font-semibold tracking-[0.2em] text-brand/70 uppercase">
+            <Badge className="fade-in-up w-fit rounded-full font-bold bg-brand/10 text-brand hover:bg-brand/15">
               {siteConfig.hero.label}
-            </p>
+            </Badge>
 
             <div className="fade-in-up-delay-1 space-y-4">
               <h1
@@ -57,7 +59,7 @@ export function HeroSection() {
             <img
               src={siteConfig.images.hero}
               alt="Layana Laurindo, advogada, retrato profissional com fundo de madeira"
-              className="hero-portrait"
+              className="hero-portrait rounded-lg"
               width={408}
               height={612}
               fetchPriority="high"
@@ -66,19 +68,21 @@ export function HeroSection() {
         </div>
       </div>
 
-      <div className="shrink-0 border-t border-brand/15 bg-hero-stats">
-        <div className="container-narrow px-4 sm:px-6 lg:px-8">
-          <dl className="grid grid-cols-2 divide-x divide-y divide-brand/15 lg:grid-cols-4 lg:divide-y-0">
+      <div className="shrink-0 px-4 pb-5 sm:px-6 sm:pb-6 lg:px-8">
+        <div className="container-narrow">
+          <dl className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
             {siteConfig.hero.stats.map((stat) => (
-              <div
+              <Card
                 key={stat.label}
-                className="flex flex-col items-center justify-center px-4 py-6 text-center sm:px-6 sm:py-8"
+                className="border-brand/15 bg-card/95 shadow-sm ring-brand/10 backdrop-blur-sm transition-shadow hover:shadow-md"
               >
-                <dt className="hero-stat-value text-brand">{stat.value}</dt>
-                <dd className="hero-stat-label mt-2 text-foreground/60">
-                  {stat.label}
-                </dd>
-              </div>
+                <CardContent className="flex flex-col items-center justify-center py-5 text-center sm:py-6">
+                  <dt className="hero-stat-value text-brand">{stat.value}</dt>
+                  <dd className="hero-stat-label mt-2 text-muted-foreground">
+                    {stat.label}
+                  </dd>
+                </CardContent>
+              </Card>
             ))}
           </dl>
         </div>

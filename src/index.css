@@ -42,35 +42,35 @@
   --radius-pill: 50px;
 }
 
-/* Paleta marrom — extraída do blazer da foto, levemente mais escura */
+/* Paleta cream (#fff8ed) + dourado (#cba258) */
 :root {
   --radius: 0.75rem;
 
-  --background: #f7f3ef;
+  --background: #fff8ed;
   --foreground: rgba(0, 0, 0, 0.87);
   --card: #ffffff;
   --card-foreground: rgba(0, 0, 0, 0.87);
   --popover: #ffffff;
   --popover-foreground: rgba(0, 0, 0, 0.87);
 
-  --primary: #b8988c;
+  --primary: #cba258;
   --primary-foreground: #ffffff;
-  --secondary: #f0ebe7;
+  --secondary: #fff3e0;
   --secondary-foreground: rgba(0, 0, 0, 0.87);
-  --muted: #f0ebe7;
+  --muted: #fff3e0;
   --muted-foreground: rgba(0, 0, 0, 0.58);
-  --accent: #fdf8f5;
-  --accent-foreground: #8a6e62;
+  --accent: #fff8ed;
+  --accent-foreground: #a88642;
   --destructive: #c82014;
-  --border: #ece6e1;
-  --input: #e5ddd7;
-  --ring: #b8988c;
+  --border: #f0e4d0;
+  --input: #e8dcc8;
+  --ring: #cba258;
 
   --brand: #cba258;
-  --brand-accent: #c9aba0;
-  --brand-dark: #7a665c;
+  --brand-accent: #b8924a;
+  --brand-dark: #8a6b35;
   --gold: #cba258;
-  --ceramic: #edebe9;
+  --ceramic: #fff3e0;
 
   --header-height: 4rem;
 }
@@ -131,7 +131,7 @@
   }
 
   .section-padding {
-    @apply px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24;
+    @apply px-4 py-8 sm:px-6 sm:py-12 lg:px-6 lg:py-16;
   }
 
   .container-narrow {
@@ -139,7 +139,7 @@
   }
 
   .bg-hero {
-    background-color: #fff8ed;
+    background-color: var(--background);
   }
 
   .hero-viewport {
@@ -149,7 +149,7 @@
   }
 
   .bg-hero-stats {
-    background: #fff8ed;
+    background: var(--background);
   }
 
   .hero-portrait {
@@ -190,7 +190,7 @@
   }
 
   .bg-services {
-    background: #f9fafb;
+    background: var(--secondary);
   }
 
   .btn-pill {

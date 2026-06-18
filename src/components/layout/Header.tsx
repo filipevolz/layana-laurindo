@@ -31,7 +31,7 @@ export function Header() {
       className={cn(
         'fixed inset-x-0 top-0 z-50 transition-colors duration-300',
         onHero
-          ? 'border-b border-brand/15 bg-[#dfd3ce]/90 backdrop-blur-md'
+          ? 'border-b border-brand/15 bg-services '
           : 'border-b border-border/60 bg-background/95 backdrop-blur-sm',
       )}
     >
@@ -79,8 +79,8 @@ export function Header() {
               className={cn(
                 'text-sm font-medium transition-colors',
                 onHero
-                  ? 'text-brand/80 hover:text-brand'
-                  : 'text-foreground/80 hover:text-brand',
+                  ? 'text-brand hover:text-brand'
+                  : 'text-foreground hover:text-brand',
               )}
             >
               {item.label}

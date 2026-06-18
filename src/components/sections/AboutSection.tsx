@@ -23,10 +23,7 @@ export function AboutSection() {
           </div>
 
           <div className="space-y-6">
-            <Badge
-              variant="outline"
-              className="rounded-full border-brand/30 text-brand"
-            >
+            <Badge className="rounded-full font-bold bg-brand/10 text-brand hover:bg-brand/15">
               Sobre
             </Badge>
             <h2

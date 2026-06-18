@@ -1,102 +1,71 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { siteConfig } from '@/lib/site-config'
+import { trustIcons } from '@/lib/trust-icons'
 
 export function TrustSection() {
   return (
     <section
       id="diferenciais"
-      className="section-padding bg-brand-dark text-white"
+      className="section-padding bg-services text-foreground"
       aria-labelledby="trust-heading"
     >
-      <div className="container-narrow">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start lg:gap-16">
-          <div className="space-y-6">
-            <Badge className="rounded-full bg-white/10 text-white hover:bg-white/15">
-              Diferenciais
-            </Badge>
-            <h2
-              id="trust-heading"
-              className="font-display text-3xl text-white sm:text-4xl"
-            >
-              Confiança construída com técnica e proximidade
-            </h2>
-            <p className="text-white/70 leading-relaxed">
-              Cada atendimento combina conhecimento jurídico, comunicação
-              transparente e respeito ao momento vivido por você e sua família.
-            </p>
+      <div className="container-narrow px-4 sm:px-6 lg:px-8">
+        <div className="mb-6 flex flex-col items-center space-y-4 text-center">
+          <Badge className="rounded-full font-bold bg-brand/10 text-brand hover:bg-brand/15">
+            Diferenciais
+          </Badge>
+          <h2
+            id="trust-heading"
+            className="font-display mx-auto max-w-2xl text-3xl text-brand sm:text-4xl"
+          >
+            Confiança construída com técnica e proximidade
+          </h2>
+          <p className="mx-auto max-w-2xl leading-relaxed text-muted-foreground">
+            Cada atendimento combina conhecimento jurídico, comunicação
+            transparente e respeito ao momento vivido por você e sua família.
+          </p>
+        </div>
 
-            <div className="hidden lg:block">
-              <img
-                src={siteConfig.images.portrait}
-                alt="Layana Laurindo em ambiente de escritório sofisticado, postura confiante"
-                className="aspect-[4/5] w-full max-w-sm rounded-xl object-cover"
-                width={480}
-                height={600}
-                loading="lazy"
-              />
-            </div>
-          </div>
+        <div className="grid items-center gap-6 lg:gap-0 lg:grid-cols-[1fr_1.1fr]">
+          <img
+            src={siteConfig.images.portrait}
+            alt="Layana Laurindo em ambiente de escritório sofisticado, postura confiante"
+            className="mx-auto aspect-[4/5] w-full max-w-sm rounded-xl object-cover lg:mx-0"
+            width={480}
+            height={600}
+            loading="lazy"
+          />
 
-          <div className="space-y-8">
-            <div className="grid gap-4 sm:grid-cols-2">
-              {siteConfig.trustPoints.map((point) => (
+          <div className="grid gap-4 sm:grid-cols-2">
+            {siteConfig.trustPoints.map((point) => {
+              const Icon = trustIcons[point.id]
+
+              return (
                 <Card
-                  key={point.title}
-                  className="border-white/10 bg-white/5 text-white backdrop-blur-sm"
+                  key={point.id}
+                  className="border-brand/15 shadow-sm transition-shadow hover:shadow-md"
                 >
-                  <CardHeader className="pb-2">
-                    <CardTitle className="font-display text-lg text-white">
+                  <CardHeader className="flex flex-row items-center gap-2">
+                    {Icon && (
+                      <Icon
+                        className="size-6 text-brand"
+                        strokeWidth={1.5}
+                        aria-hidden="true"
+                      />
+                    )}
+                    <CardTitle className="font-sans text-lg text-foreground">
                       {point.title}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm leading-relaxed text-white/70">
+                    <p className="text-sm leading-relaxed text-muted-foreground">
                       {point.description}
                     </p>
                   </CardContent>
                 </Card>
-              ))}
-            </div>
-
-            <div className="lg:hidden">
-              <img
-                src={siteConfig.images.portrait}
-                alt="Layana Laurindo em ambiente de escritório sofisticado, postura confiante"
-                className="aspect-[4/5] w-full rounded-xl object-cover"
-                width={480}
-                height={600}
-                loading="lazy"
-              />
-            </div>
-
-            <div className="rounded-xl border border-white/10 bg-white/5 p-6">
-              <h3 className="font-display mb-4 text-xl text-white">
-                Perguntas frequentes
-              </h3>
-              <Accordion type="single" collapsible className="w-full">
-                {siteConfig.faq.map((item, index) => (
-                  <AccordionItem
-                    key={item.question}
-                    value={`faq-${index}`}
-                    className="border-white/15"
-                  >
-                    <AccordionTrigger className="text-left text-white hover:text-white/90 hover:no-underline">
-                      {item.question}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-white/70">
-                      {item.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </div>
+              )
+            })}
           </div>
         </div>
       </div>
