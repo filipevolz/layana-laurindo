@@ -1,4 +1,5 @@
 import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import { AboutSection } from '@/components/sections/AboutSection'
 import { ContactSection } from '@/components/sections/ContactSection'
 import { FaqSection } from '@/components/sections/FaqSection'
@@ -26,6 +27,7 @@ function App() {
       <Footer />
       <WhatsAppButton />
       <Analytics />
+      <SpeedInsights />
     </>
   )
 }
