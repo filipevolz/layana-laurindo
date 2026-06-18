@@ -22,7 +22,7 @@ export function TrustSection() {
           </Badge>
           <h2
             id="trust-heading"
-            className="text-section-title font-display mx-auto max-w-2xl text-brand"
+            className="text-section-title font-display mx-auto text-brand"
           >
             Confiança construída com técnica e proximidade
           </h2>
