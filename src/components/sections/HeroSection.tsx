@@ -43,7 +43,7 @@ export function HeroSection() {
                 className="h-12 w-full border-0 bg-primary px-6 text-sm font-bold tracking-wide text-primary-foreground uppercase hover:bg-primary/90 sm:w-auto"
               >
                 <MessageCircle className="size-4" aria-hidden="true" />
-                Falar com uma advogada
+                Falar com a Layana
               </WhatsAppLink>
               <Button
                 asChild
