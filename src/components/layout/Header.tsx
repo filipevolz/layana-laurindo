@@ -19,34 +19,54 @@ function NavLink({
   children,
   className,
   onClick,
+  isActive,
 }: {
   href: string
   children: React.ReactNode
   className?: string
   onClick?: () => void
+  isActive?: boolean
 }) {
   const isHash = href.startsWith('#')
   const to = isHash ? { pathname: '/', hash: href } : href
+  const ariaCurrent = isActive ? 'location' : undefined
 
   if (isHash || href.startsWith('/')) {
     return (
-      <Link to={to} className={className} onClick={onClick}>
+      <Link
+        to={to}
+        className={className}
+        onClick={onClick}
+        aria-current={ariaCurrent}
+      >
         {children}
       </Link>
     )
   }
 
   return (
-    <a href={href} className={className} onClick={onClick}>
+    <a href={href} className={className} onClick={onClick} aria-current={ariaCurrent}>
       {children}
     </a>
   )
 }
 
+function isNavItemActive(pathname: string, hash: string, href: string) {
+  if (pathname !== '/') {
+    return false
+  }
+
+  if (href === '#inicio') {
+    return hash === '' || hash === '#inicio'
+  }
+
+  return hash === href
+}
+
 export function Header() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
   const isHome = pathname === '/'
 
   useEffect(() => {
@@ -71,10 +91,8 @@ export function Header() {
         <Link to="/" className="group flex items-center gap-3">
           <span
             className={cn(
-              'flex size-9 items-center justify-center rounded-full border text-xs font-bold',
-              onHero
-                ? 'border-brand/25 text-brand'
-                : 'border-brand/30 text-brand',
+              'flex size-9 items-center justify-center rounded-full border text-xs font-bold text-brand',
+              onHero ? 'border-brand/25' : 'border-brand/30',
             )}
             aria-hidden="true"
           >
@@ -108,6 +126,7 @@ export function Header() {
             <NavLink
               key={item.href}
               href={item.href}
+              isActive={isNavItemActive(pathname, hash, item.href)}
               className={cn(
                 'nav-link py-1 text-sm font-medium transition-colors duration-300',
                 onHero
@@ -139,13 +158,14 @@ export function Header() {
               variant="outline"
               size="icon-lg"
               aria-label="Abrir menu"
+              aria-expanded={open}
               className={cn(
                 'min-h-11 min-w-11 touch-manipulation',
                 onHero &&
                   'border-brand/30 bg-transparent text-brand hover:bg-brand/5 hover:text-brand',
               )}
             >
-              <Menu />
+              <Menu aria-hidden="true" />
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-[min(100%,20rem)]">
@@ -159,6 +179,7 @@ export function Header() {
                 <NavLink
                   key={item.href}
                   href={item.href}
+                  isActive={isNavItemActive(pathname, hash, item.href)}
                   onClick={() => setOpen(false)}
                   className="rounded-lg px-2 py-3 -mx-2 text-lg font-medium text-foreground/80 transition-colors hover-fine:bg-brand/5 hover-fine:text-brand"
                 >

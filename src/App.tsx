@@ -3,6 +3,7 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
+import { SkipLink } from '@/components/layout/SkipLink'
 import { WhatsAppButton } from '@/components/layout/WhatsAppButton'
 import {
   landingPages,
@@ -34,8 +35,11 @@ function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <ScrollToTop />
+      <SkipLink />
       <Header />
-      <main>{children}</main>
+      <main id="main-content" tabIndex={-1}>
+        {children}
+      </main>
       <Footer />
       <WhatsAppButton />
       <Analytics />

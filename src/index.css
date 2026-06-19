@@ -100,6 +100,7 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-bottom: calc(5rem + env(safe-area-inset-bottom));
     @apply font-sans;
   }
 
@@ -114,6 +115,14 @@
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
+    }
+
+    .fade-in-up,
+    .fade-in-up-delay-1,
+    .fade-in-up-delay-2,
+    .reveal {
+      opacity: 1;
+      transform: none;
     }
   }
 
@@ -161,6 +170,26 @@
     padding-right: env(safe-area-inset-right);
   }
 
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    z-index: 100;
+    padding: 0.75rem 1rem;
+    background: var(--primary);
+    color: var(--primary-foreground);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0 0 var(--radius-md) 0;
+  }
+
+  .skip-link:focus {
+    top: 0;
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
   .text-section-title {
     font-size: clamp(1.75rem, 4vw + 0.5rem, 2.5rem);
   }
@@ -188,7 +217,7 @@
   }
 
   .hero-portrait-wrap {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     width: fit-content;
@@ -197,15 +226,6 @@
     background: var(--primary);
     border-radius: var(--radius-lg);
     padding: clamp(0.375rem, 1vw, 0.625rem);
-  }
-
-  @media (min-width: 1024px) {
-    .hero-portrait-wrap {
-      width: auto;
-      align-self: stretch;
-      min-height: min(70vh, 580px);
-      padding: clamp(0.5rem, 1.25vw, 0.875rem);
-    }
   }
 
   .hero-portrait {
@@ -218,17 +238,47 @@
     object-position: center;
   }
 
-  @media (min-width: 640px) {
+  @media (min-width: 640px) and (max-width: 767px) {
     .hero-portrait {
       max-height: min(64vh, 540px);
-      max-width: min(75%, 380px);
+      max-width: min(380px, 100%);
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .hero-portrait-wrap {
+      padding: clamp(0.375rem, 0.75vw, 0.5rem);
+    }
+
+    .hero-portrait {
+      max-height: min(46vh, 380px);
+      max-width: min(260px, 100%);
     }
   }
 
   @media (min-width: 1024px) {
+    .hero-portrait-wrap {
+      width: auto;
+      align-self: stretch;
+      min-height: min(70vh, 580px);
+      padding: clamp(0.5rem, 1.25vw, 0.875rem);
+    }
+
     .hero-portrait {
       max-height: min(70vh, 580px);
       max-width: 420px;
+    }
+  }
+
+  @media (min-width: 1024px) and (max-height: 900px) {
+    .hero-portrait-wrap {
+      align-self: center;
+      min-height: auto;
+    }
+
+    .hero-portrait {
+      max-height: min(52vh, 460px);
+      max-width: min(340px, 100%);
     }
   }
 

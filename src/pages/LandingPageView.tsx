@@ -134,6 +134,7 @@ export function LandingPageView({ page }: LandingPageViewProps) {
                       {page.comparisonTable.columns.map((col) => (
                         <th
                           key={col}
+                          scope="col"
                           className="px-4 py-3 font-semibold text-foreground"
                         >
                           {col}

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 
+import { OpensInNewTabHint } from '@/components/a11y/OpensInNewTabHint'
 import { buildWhatsAppUrl, siteConfig } from '@/lib/site-config'
 import { landingPages } from '@/lib/landing-pages'
 
@@ -37,6 +38,7 @@ function FooterLinkList({
               rel="noopener noreferrer"
             >
               {item.label}
+              <OpensInNewTabHint />
             </a>
           ) : item.href.startsWith('#') ? (
             <Link
@@ -129,6 +131,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                 >
                   Falar com Layana
+                  <OpensInNewTabHint />
                 </a>
               </li>
               <li>
@@ -142,6 +145,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                 >
                   {siteConfig.social.instagram.label}
+                  <OpensInNewTabHint />
                 </a>
               </li>
               <li>
@@ -155,6 +159,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                 >
                   {siteConfig.social.linkedin.label}
+                  <OpensInNewTabHint />
                 </a>
               </li>
               <li>
@@ -182,6 +187,7 @@ export function Footer() {
                     {siteConfig.address.line1}
                     <br />
                     {siteConfig.address.line2}
+                    <OpensInNewTabHint />
                   </a>
                 </address>
               </li>

@@ -1,5 +1,6 @@
 import { MessageCircle } from 'lucide-react'
 
+import { OpensInNewTabHint } from '@/components/a11y/OpensInNewTabHint'
 import { Button } from '@/components/ui/button'
 import { buildWhatsAppUrl } from '@/lib/site-config'
 import { cn } from '@/lib/utils'
@@ -35,6 +36,7 @@ export function WhatsAppLink({
       >
         {showIcon && <MessageCircle aria-hidden="true" />}
         {children}
+        <OpensInNewTabHint />
       </a>
     </Button>
   )

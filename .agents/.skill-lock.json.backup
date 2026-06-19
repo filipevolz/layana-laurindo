@@ -104,7 +104,21 @@
       "source": "local",
       "contentHash": "8ff9c7d6181c37c92fb225a8559d50ee5413c20e6a7ae240e05bb6a532d64f9b",
       "installedAt": "2026-06-18T19:53:27.600Z",
-      "updatedAt": "2026-06-18T19:53:27.604Z",
+      "updatedAt": "2026-06-18T19:53:27.633Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "windsurf"
+      ],
+      "method": "copy",
+      "global": false
+    },
+    "accessibility": {
+      "name": "accessibility",
+      "source": "local",
+      "contentHash": "706129400c8c91a9264582940b36007116faffcaf27bb0780bdab87337b4f881",
+      "installedAt": "2026-06-19T20:35:25.765Z",
+      "updatedAt": "2026-06-19T20:35:25.778Z",
       "agents": [
         "cursor",
         "claude-code"

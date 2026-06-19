@@ -154,7 +154,7 @@ function TestimonialsCarousel() {
               className="flex min-h-11 min-w-11 touch-manipulation items-center justify-center"
               onClick={() => api?.scrollTo(index)}
               aria-label={`Ir para depoimento ${index + 1}`}
-              aria-current={index === current ? 'true' : undefined}
+              aria-pressed={index === current}
             >
               <span
                 className={cn(

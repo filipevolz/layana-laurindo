@@ -14,12 +14,12 @@ export function HeroSection() {
   return (
     <section
       id="inicio"
-      className="hero-viewport relative flex flex-col overflow-hidden bg-hero text-foreground"
+      className="hero-viewport relative flex flex-col gap-8 overflow-hidden bg-hero text-foreground md:gap-10"
       aria-labelledby="hero-heading"
     >
-      <div className="container-narrow flex min-h-0 flex-1 flex-col px-4 sm:px-6 lg:px-8">
-        <div className="grid min-h-0 flex-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
-          <div className="z-10 flex flex-col justify-center space-y-6 py-4 lg:py-0">
+      <div className="container-narrow flex min-h-0 flex-1 flex-col px-4 sm:px-6 md:pt-8 lg:px-8 lg:pt-6 xl:pt-0">
+        <div className="grid min-h-0 flex-1 items-center gap-6 md:grid-cols-2 md:gap-8 lg:gap-12">
+          <div className="z-10 flex flex-col justify-center space-y-6 py-4 md:py-0">
             <Badge className="fade-in-up w-fit rounded-full font-bold bg-brand/10 text-brand hover:bg-brand/15">
               {siteConfig.hero.label}
             </Badge>
@@ -60,8 +60,8 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="flex min-h-0 items-center justify-center py-2 lg:items-stretch lg:py-0">
-            <Reveal variant="right" delay={200} immediate className="flex w-full justify-center lg:h-full">
+          <div className="flex min-h-0 items-center justify-center py-2 md:items-stretch md:py-0">
+            <Reveal variant="right" delay={200} immediate className="flex w-full justify-center md:h-full">
               <div className="hero-portrait-wrap">
                 <ResponsiveImage
                   {...responsiveImages.hero}
@@ -77,7 +77,7 @@ export function HeroSection() {
 
       <div className="shrink-0 px-4 pb-5 sm:px-6 sm:pb-6 lg:px-8">
         <div className="container-narrow">
-          <dl className="grid grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-4">
             {siteConfig.hero.stats.map((stat, index) => (
               <Reveal key={stat.label} variant="up" staggerIndex={index} immediate className="h-full">
                 <GoldBorderCard
@@ -85,15 +85,17 @@ export function HeroSection() {
                   className="bg-card/95 backdrop-blur-sm"
                 >
                   <CardContent className="flex flex-col items-center justify-center px-2 py-4 text-center sm:px-4 sm:py-6">
-                    <dt className="hero-stat-value text-brand">{stat.value}</dt>
-                    <dd className="hero-stat-label mt-1.5 text-xs text-muted-foreground sm:mt-2 sm:text-[inherit]">
-                      {stat.label}
-                    </dd>
+                    <dl>
+                      <dt className="hero-stat-value text-brand">{stat.value}</dt>
+                      <dd className="hero-stat-label mt-1.5 text-xs text-muted-foreground sm:mt-2 sm:text-[inherit]">
+                        {stat.label}
+                      </dd>
+                    </dl>
                   </CardContent>
                 </GoldBorderCard>
               </Reveal>
             ))}
-          </dl>
+          </div>
         </div>
       </div>
     </section>
