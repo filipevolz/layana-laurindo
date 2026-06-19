@@ -36,7 +36,7 @@ export const siteConfig = {
       'Layana Laurindo, advogada em Florianópolis. Atuação em Direito Civil, Direito de Família, Curatela e Sucessões. Agende sua consulta pelo WhatsApp.',
     ogDescription:
       'Orientação jurídica clara e humanizada. Divórcio, guarda, pensão, inventário, curatela, contratos e mais. Fale pelo WhatsApp.',
-    ogImage: '/images/layana-hero-683w.webp',
+    ogImage: '/images/layana-hero.png',
     ogImageAlt: 'Layana Laurindo, advogada em Florianópolis',
     locale: 'pt_BR',
     themeColor: '#2D241B',
