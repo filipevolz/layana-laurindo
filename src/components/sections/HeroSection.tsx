@@ -31,7 +31,7 @@ export function HeroSection() {
               >
                 {siteConfig.hero.headline}
               </h1>
-              <p className="max-w-lg text-base leading-relaxed text-foreground/75 sm:text-lg">
+              <p className="max-w-lg text-base leading-relaxed text-foreground sm:text-lg">
                 {siteConfig.hero.subheadline}
               </p>
             </div>
@@ -40,7 +40,8 @@ export function HeroSection() {
               <WhatsAppLink
                 message={siteConfig.defaultWhatsAppMessage}
                 showIcon={false}
-                className="h-12 w-full border-0 bg-primary px-6 text-sm font-bold tracking-wide text-primary-foreground uppercase hover:bg-primary/90 sm:w-auto"
+                size="lg"
+                className="h-12 w-full px-6 text-sm font-bold tracking-wide uppercase sm:w-auto"
               >
                 <MessageCircle className="size-4" aria-hidden="true" />
                 Falar com a Layana
@@ -49,7 +50,7 @@ export function HeroSection() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="btn-press h-12 w-full border-brand/35 bg-transparent px-6 text-sm font-semibold text-brand uppercase hover:bg-brand/5 hover:text-brand sm:w-auto"
+                className="btn-press h-12 w-full border-primary/30 bg-transparent px-6 text-sm font-semibold text-primary uppercase hover:bg-primary/5 hover:text-primary sm:w-auto"
               >
                 <a href="#servicos" className="inline-flex items-center justify-center gap-2">
                   Ver áreas de atuação
@@ -59,14 +60,16 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="flex min-h-0 items-center justify-center py-2 lg:py-0">
-            <Reveal variant="right" delay={200} immediate>
-              <ResponsiveImage
-                {...responsiveImages.hero}
-                alt="Layana Laurindo, advogada, retrato profissional com fundo de madeira"
-                className="hero-portrait rounded-lg"
-                fetchPriority="high"
-              />
+          <div className="flex min-h-0 items-center justify-center py-2 lg:items-stretch lg:py-0">
+            <Reveal variant="right" delay={200} immediate className="flex w-full justify-center lg:h-full">
+              <div className="hero-portrait-wrap">
+                <ResponsiveImage
+                  {...responsiveImages.hero}
+                  alt="Layana Laurindo, advogada, retrato profissional com fundo de madeira"
+                  className="hero-portrait rounded-lg"
+                  fetchPriority="high"
+                />
+              </div>
             </Reveal>
           </div>
         </div>

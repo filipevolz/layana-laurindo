@@ -70,7 +70,7 @@ function TestimonialCard({
     <GoldBorderCard animationIndex={index} className="h-full">
       <CardContent className="flex h-full flex-col gap-4 pt-6">
         <StarRating rating={testimonial.rating} />
-        <blockquote className="flex-1 text-sm leading-relaxed text-foreground/85">
+        <blockquote className="flex-1 text-sm leading-relaxed text-foreground">
           “{testimonial.quote}”
         </blockquote>
         <footer className="flex items-center gap-3 border-t border-brand/10 pt-4">
@@ -190,7 +190,7 @@ export function TestimonialsSection() {
           >
             {siteConfig.testimonialsSection.title}
           </h2>
-          <p className="mx-auto leading-relaxed text-muted-foreground">
+          <p className="mx-auto leading-relaxed text-foreground">
             {siteConfig.testimonialsSection.description}
           </p>
         </div>

@@ -39,7 +39,7 @@ export const siteConfig = {
     ogImage: '/images/layana-hero-683w.webp',
     ogImageAlt: 'Layana Laurindo, advogada em Florianópolis',
     locale: 'pt_BR',
-    themeColor: '#1a3a2f',
+    themeColor: '#2D241B',
     updatedAt: '2026-06-01',
     updatedAtLabel: 'junho de 2026',
   },

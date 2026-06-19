@@ -34,7 +34,7 @@ export function AboutSection() {
               {siteConfig.about.headline}
             </h2>
 
-            <div className="space-y-4 text-muted-foreground">
+            <div className="space-y-4 text-foreground">
               {siteConfig.about.paragraphs.map((paragraph) => (
                 <p key={paragraph.slice(0, 40)} className="leading-relaxed">
                   {paragraph}

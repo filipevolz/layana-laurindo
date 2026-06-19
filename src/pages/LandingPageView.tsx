@@ -85,7 +85,7 @@ export function LandingPageView({ page }: LandingPageViewProps) {
             <h1 className="text-section-title font-display max-w-3xl font-bold text-brand">
               {page.h1}
             </h1>
-            <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-muted-foreground">
+            <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-foreground">
               {page.intro.map((paragraph) => (
                 <p key={paragraph.slice(0, 40)}>{paragraph}</p>
               ))}
@@ -196,7 +196,7 @@ export function LandingPageView({ page }: LandingPageViewProps) {
             <h2 className="text-section-title font-display mb-6 font-bold text-brand">
               {page.whyHeading}
             </h2>
-            <div className="max-w-3xl space-y-4 text-base leading-relaxed text-muted-foreground">
+            <div className="max-w-3xl space-y-4 text-base leading-relaxed text-foreground">
               {page.whyParagraphs.map((paragraph) => (
                 <p key={paragraph.slice(0, 40)}>{paragraph}</p>
               ))}
@@ -284,13 +284,13 @@ export function LandingPageView({ page }: LandingPageViewProps) {
         </section>
       )}
 
-      <section className="section-padding bg-brand text-brand-foreground">
+      <section className="section-padding bg-primary text-primary-foreground">
         <div className="container-narrow text-center">
           <Reveal variant="up">
             <h2 className="text-section-title font-display mb-4 font-bold">
               Precisa de orientação jurídica?
             </h2>
-            <p className="mx-auto mb-8 max-w-xl text-brand-foreground/85">
+            <p className="mx-auto mb-8 max-w-xl text-primary-foreground/85">
               Entre em contato pelo WhatsApp. Retorno em até 24 horas para
               analisar sua situação e indicar os próximos passos.
             </p>

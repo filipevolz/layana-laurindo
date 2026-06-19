@@ -194,7 +194,7 @@ export function ServicesSection() {
           >
             {siteConfig.servicesSection.title}
           </h2>
-          <p className="mx-auto max-w-2xl leading-relaxed text-muted-foreground">
+          <p className="mx-auto max-w-2xl leading-relaxed text-foreground">
             {siteConfig.servicesSection.description}
           </p>
         </div>

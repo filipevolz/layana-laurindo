@@ -26,7 +26,7 @@ export function TrustSection() {
           >
             Confiança construída com técnica e proximidade
           </h2>
-          <p className="mx-auto max-w-2xl leading-relaxed text-muted-foreground">
+          <p className="mx-auto max-w-2xl leading-relaxed text-foreground">
             Cada atendimento combina conhecimento jurídico, comunicação
             transparente e respeito ao momento vivido por você e sua família.
           </p>

@@ -26,7 +26,7 @@ export function ContactSection() {
                   Pronto para dar o primeiro passo?
                 </h2>
               </div>
-              <p className="mt-4 text-muted-foreground leading-relaxed">
+              <p className="mt-4 leading-relaxed text-foreground">
                 Envie uma mensagem pelo WhatsApp e conte brevemente sua situação.
                 Retorno com orientação sobre documentos, prazos e próximos passos.
               </p>
