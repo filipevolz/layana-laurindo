@@ -128,7 +128,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Falar no WhatsApp
+                  Falar com Layana
                 </a>
               </li>
               <li>

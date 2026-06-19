@@ -37,7 +37,7 @@ export function ContactSection() {
                   size="lg"
                   className="w-full max-w-sm font-semibold sm:w-auto"
                 >
-                  Falar com Layana no WhatsApp
+                  Falar com Layana
                 </WhatsAppLink>
                 <p className="text-sm text-muted-foreground">{siteConfig.city}</p>
               </div>
