@@ -88,17 +88,16 @@ export function Header() {
       )}
     >
       <div className="container-narrow flex h-16 items-center justify-between px-4 md:px-6 lg:px-8 xl:px-0">
-        <Link to="/" className="group flex items-center gap-3">
-          <span
-            className={cn(
-              'flex size-9 items-center justify-center rounded-full border text-xs font-bold text-brand',
-              onHero ? 'border-brand/25' : 'border-brand/30',
-            )}
+        <Link to="/" className="group flex items-center">
+          <img
+            src={siteConfig.images.logo}
+            alt=""
+            width={42}
+            height={42}
+            className="size-16 shrink-0 object-contain"
             aria-hidden="true"
-          >
-            LL
-          </span>
-          <span className="leading-tight">
+          />
+          <span className="-ml-2 leading-tight">
             <span
               className={cn(
                 'block text-lg font-bold tracking-tight uppercase',
@@ -109,8 +108,8 @@ export function Header() {
             </span>
             <span
               className={cn(
-                'block text-[0.65rem] font-semibold tracking-[0.2em] uppercase',
-                onHero ? 'text-brand/60' : 'text-muted-foreground',
+                'block text-[0.65rem] font-semibold tracking-[0.2em] uppercase mb-1.5',
+                onHero ? 'text-brand/80' : 'text-muted-foreground',
               )}
             >
               Laurindo

@@ -398,6 +398,7 @@ export const siteConfig = {
     },
   ] satisfies ServiceCategory[],
   images: {
+    logo: '/images/logo.png',
     hero: '/images/layana-hero.png',
     heroCutout: '/images/layana-hero-cutout.png',
     office: '/images/layana-office.png',
