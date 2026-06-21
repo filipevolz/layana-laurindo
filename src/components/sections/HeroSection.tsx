@@ -17,7 +17,7 @@ export function HeroSection() {
       className="hero-viewport relative flex flex-col gap-8 overflow-hidden bg-hero text-foreground md:gap-10"
       aria-labelledby="hero-heading"
     >
-      <div className="flex items-center justify-between container-narrow pt-6 flex-col md:flex-row px-4 md:px-6 lg:px-8 xl:px-0">
+      <div className="flex flex-1 items-center justify-between container-narrow pt-6 flex-col md:flex-row px-4 md:px-6 lg:px-8 xl:px-0">
         <div className="z-10 flex flex-col justify-center space-y-6 py-4 md:py-0">
           <Badge className="fade-in-up w-fit rounded-full font-bold bg-brand/10 text-brand hover:bg-brand/15">
             {siteConfig.hero.label}
@@ -59,8 +59,8 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="flex min-h-0 items-center justify-center py-2 md:items-stretch md:py-0">
-          <Reveal variant="right" delay={200} immediate className="flex w-full justify-center md:h-full">
+        <div className="flex min-h-0 flex-1 items-center justify-center py-2 md:items-stretch md:py-0">
+          <Reveal variant="right" delay={200} immediate className="flex h-full w-full justify-center">
             <ResponsiveImage
               {...responsiveImages.hero}
               alt="Layana Laurindo, advogada, retrato profissional com fundo de madeira"
