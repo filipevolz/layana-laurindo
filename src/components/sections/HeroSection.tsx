@@ -17,61 +17,57 @@ export function HeroSection() {
       className="hero-viewport relative flex flex-col gap-8 overflow-hidden bg-hero text-foreground md:gap-10"
       aria-labelledby="hero-heading"
     >
-      <div className="container-narrow flex min-h-0 flex-1 flex-col px-4 sm:px-6 md:pt-8 lg:px-8 lg:pt-6 xl:pt-0">
-        <div className="grid min-h-0 flex-1 items-center gap-6 md:grid-cols-2 md:gap-8 lg:gap-12">
-          <div className="z-10 flex flex-col justify-center space-y-6 py-4 md:py-0">
-            <Badge className="fade-in-up w-fit rounded-full font-bold bg-brand/10 text-brand hover:bg-brand/15">
-              {siteConfig.hero.label}
-            </Badge>
+      <div className="flex items-center justify-between container-narrow pt-6 flex-col md:flex-row px-4 md:px-6 lg:px-8 xl:px-0">
+        <div className="z-10 flex flex-col justify-center space-y-6 py-4 md:py-0">
+          <Badge className="fade-in-up w-fit rounded-full font-bold bg-brand/10 text-brand hover:bg-brand/15">
+            {siteConfig.hero.label}
+          </Badge>
 
-            <div className="fade-in-up-delay-1 space-y-4">
-              <h1
-                id="hero-heading"
-                className="text-hero-title max-w-xl font-display leading-[1.1] font-bold tracking-tight text-brand text-balance"
-              >
-                {siteConfig.hero.headline}
-              </h1>
-              <p className="max-w-lg text-base leading-relaxed text-foreground sm:text-lg">
-                {siteConfig.hero.subheadline}
-              </p>
-            </div>
-
-            <div className="fade-in-up-delay-2 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <WhatsAppLink
-                message={siteConfig.defaultWhatsAppMessage}
-                showIcon={false}
-                size="lg"
-                className="h-12 w-full px-6 text-sm font-bold tracking-wide uppercase sm:w-auto"
-              >
-                <MessageCircle className="size-4" aria-hidden="true" />
-                Falar com a Layana
-              </WhatsAppLink>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="btn-press h-12 w-full border-primary/30 bg-transparent px-6 text-sm font-semibold text-primary uppercase hover:bg-primary/5 hover:text-primary sm:w-auto"
-              >
-                <a href="#servicos" className="inline-flex items-center justify-center gap-2">
-                  Ver áreas de atuação
-                  <ArrowRight className="size-4" aria-hidden="true" />
-                </a>
-              </Button>
-            </div>
+          <div className="fade-in-up-delay-1 space-y-4">
+            <h1
+              id="hero-heading"
+              className="text-hero-title max-w-xl font-display leading-[1.1] font-bold tracking-tight text-brand text-balance"
+            >
+              {siteConfig.hero.headline}
+            </h1>
+            <p className="max-w-lg text-base leading-relaxed text-foreground sm:text-lg">
+              {siteConfig.hero.subheadline}
+            </p>
           </div>
 
-          <div className="flex min-h-0 items-center justify-center py-2 md:items-stretch md:py-0">
-            <Reveal variant="right" delay={200} immediate className="flex w-full justify-center md:h-full">
-              <div className="hero-portrait-wrap">
-                <ResponsiveImage
-                  {...responsiveImages.hero}
-                  alt="Layana Laurindo, advogada, retrato profissional com fundo de madeira"
-                  className="hero-portrait rounded-lg"
-                  fetchPriority="high"
-                />
-              </div>
-            </Reveal>
+          <div className="fade-in-up-delay-2 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <WhatsAppLink
+              message={siteConfig.defaultWhatsAppMessage}
+              showIcon={false}
+              size="lg"
+              className="h-12 w-full px-6 text-sm font-bold tracking-wide uppercase sm:w-auto"
+            >
+              <MessageCircle className="size-4" aria-hidden="true" />
+              Falar com a Layana
+            </WhatsAppLink>
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="btn-press h-12 w-full border-primary/30 bg-transparent px-6 text-sm font-semibold text-primary uppercase hover:bg-primary/5 hover:text-primary sm:w-auto"
+            >
+              <a href="#servicos" className="inline-flex items-center justify-center gap-2">
+                Ver áreas de atuação
+                <ArrowRight className="size-4" aria-hidden="true" />
+              </a>
+            </Button>
           </div>
+        </div>
+
+        <div className="flex min-h-0 items-center justify-center py-2 md:items-stretch md:py-0">
+          <Reveal variant="right" delay={200} immediate className="flex w-full justify-center md:h-full">
+            <ResponsiveImage
+              {...responsiveImages.hero}
+              alt="Layana Laurindo, advogada, retrato profissional com fundo de madeira"
+              className="hero-portrait rounded-lg"
+              fetchPriority="high"
+            />
+          </Reveal>
         </div>
       </div>
 
