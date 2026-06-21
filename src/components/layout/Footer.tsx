@@ -92,8 +92,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-sm leading-relaxed text-muted-foreground">
-              {siteConfig.description} Atendimento em {siteConfig.city} e em
-              todo o Brasil — presencial ou online.
+              {siteConfig.description}
             </p>
             <p className="text-sm font-medium text-muted-foreground">
               {siteConfig.oab}

@@ -48,7 +48,7 @@ export const siteConfig = {
   tagline:
     'Atuação dedicada em Direito Civil, Direito de Família, Curatela e Proteção Patrimonial e Direito das Sucessões',
   description:
-    'Orientação jurídica clara e humanizada para momentos que exigem segurança, estratégia e acolhimento.',
+    'Atuação jurídica estratégica e atendimento humanizado para quem precisa de segurança, clareza e direcionamento em decisões importantes. Atendimento presencial em Florianópolis/SC e online para todo o Brasil.',
   oab: 'OAB/SC 71.645',
   city: 'Florianópolis, SC',
   address: {
@@ -106,7 +106,7 @@ export const siteConfig = {
     label: 'Advocacia em Civil, Família, Curatela e Sucessões',
     headline: 'Proteger seus direitos exige quem entende da lei',
     subheadline:
-      'Atuação técnica, ágil e segura em Direito Civil, Direito de Família, Curatela e Proteção Patrimonial e Direito das Sucessões. Atendimento em Florianópolis, Santa Catarina e em todo o Brasil — presencial ou online.',
+      'Atuação técnica, ágil e segura em Direito Civil, Direito de Família, Curatela e Proteção Patrimonial e Direito das Sucessões. Atendimento presencial em Florianópolis/SC e online para todo o Brasil.',
     stats: [
       { value: '+10', label: 'Anos de atuação' },
       { value: '+500', label: 'Casos atendidos' },
