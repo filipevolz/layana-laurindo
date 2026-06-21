@@ -60,7 +60,7 @@ export const siteConfig = {
       'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3536.311786884208!2d-48.5838573!3d-27.5838617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x952737d8ab3fff19%3A0x11c4430f1bc16fb0!2sR.%20Gen.%20Liberato%20Bittencourt%2C%201885a%20-%20Canto%2C%20Florian%C3%B3polis%20-%20SC%2C%2088075-000!5e0!3m2!1sen!2sbr!4v1781807742303!5m2!1sen!2sbr',
   },
   whatsapp: '554896364634',
-  email: 'contato@layanalaurindo.com.br',
+  email: 'layanalaurindo07@gmail.com',
   social: {
     instagram: {
       href: 'https://www.instagram.com/layanalrndo/',
