@@ -14,7 +14,7 @@ export function HeroSection() {
   return (
     <section
       id="inicio"
-      className="hero-viewport relative flex flex-col gap-8 overflow-hidden bg-hero text-foreground md:gap-10"
+      className="hero-viewport relative flex flex-col gap-8 overflow-hidden bg-hero text-foreground"
       aria-labelledby="hero-heading"
     >
       <div className="flex flex-1 items-center justify-between container-narrow pt-6 flex-col md:flex-row px-4 md:px-6 lg:px-8 xl:px-0">
