@@ -76,18 +76,20 @@ export function Footer() {
       <div className="container-narrow section-padding">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5 lg:gap-8">
           <FooterColumn>
-            <Link to="/" className="group inline-flex items-center gap-3">
-              <span
-                className="flex size-9 items-center justify-center rounded-full border border-brand/25 text-xs font-bold text-brand"
+            <Link to="/" className="group inline-flex items-center">
+              <img
+                src={siteConfig.images.logo}
+                alt=""
+                width={42}
+                height={42}
+                className="size-16 shrink-0 object-contain"
                 aria-hidden="true"
-              >
-                LL
-              </span>
-              <span className="leading-tight">
-                <span className="block text-sm font-bold tracking-tight text-brand uppercase">
+              />
+              <span className="-ml-2 leading-tight">
+                <span className="block text-lg font-bold tracking-tight text-brand uppercase">
                   Layana
                 </span>
-                <span className="block text-[0.6rem] font-semibold tracking-[0.2em] text-brand/60 uppercase">
+                <span className="block text-[0.65rem] font-semibold tracking-[0.2em] uppercase mb-1.5 text-brand/80">
                   Laurindo
                 </span>
               </span>

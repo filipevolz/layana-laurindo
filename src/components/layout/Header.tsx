@@ -100,8 +100,7 @@ export function Header() {
           <span className="-ml-2 leading-tight">
             <span
               className={cn(
-                'block text-lg font-bold tracking-tight uppercase',
-                onHero ? 'text-brand' : 'text-foreground',
+                'block text-lg font-bold tracking-tight uppercase text-brand',
               )}
             >
               Layana
@@ -109,7 +108,7 @@ export function Header() {
             <span
               className={cn(
                 'block text-[0.65rem] font-semibold tracking-[0.2em] uppercase mb-1.5',
-                onHero ? 'text-brand/80' : 'text-muted-foreground',
+                'text-brand/80',
               )}
             >
               Laurindo
