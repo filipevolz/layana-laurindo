@@ -20,6 +20,7 @@ export function JsonLd({ faq, breadcrumbs }: JsonLdProps) {
       name: siteConfig.seo.siteName,
       description: siteConfig.seo.defaultDescription,
       inLanguage: 'pt-BR',
+      dateModified: siteConfig.seo.updatedAt,
       publisher: { '@id': `${siteConfig.seo.siteUrl}/#organization` },
     },
     {
@@ -51,6 +52,23 @@ export function JsonLd({ faq, breadcrumbs }: JsonLdProps) {
         { '@type': 'Country', name: 'Brasil' },
       ],
       knowsAbout: siteConfig.specialties,
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Áreas de atuação',
+        itemListElement: siteConfig.serviceCategories.map((category) => ({
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: category.title,
+            description: category.description,
+            provider: { '@id': `${siteConfig.seo.siteUrl}/#organization` },
+            areaServed: {
+              '@type': 'City',
+              name: 'Florianópolis',
+            },
+          },
+        })),
+      },
       identifier: {
         '@type': 'PropertyValue',
         name: 'OAB',

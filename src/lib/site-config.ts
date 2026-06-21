@@ -1,4 +1,4 @@
-export type ServiceArea = 'familia' | 'sucessoes' | 'curatela' | 'civil'
+export type ServiceArea = 'familia' | 'sucessoes' | 'civil'
 
 export interface Testimonial {
   id: string
@@ -46,13 +46,13 @@ export const siteConfig = {
   name: 'Layana Laurindo',
   title: 'Advogada',
   tagline:
-    'Atuação dedicada em Direito Civil, Direito de Família, Curatela e Proteção Patrimonial e Direito das Sucessões',
+    'Atuação dedicada em Direito Civil, Direito de Família e Direito das Sucessões',
   description:
     'Atuação jurídica estratégica e atendimento humanizado para quem precisa de segurança, clareza e direcionamento em decisões importantes. Atendimento presencial em Florianópolis/SC e online para todo o Brasil.',
   oab: 'OAB/SC 71.645',
   city: 'Florianópolis, SC',
   address: {
-    line1: 'R. Gen. Liberato Bittencourt, 1885a',
+    line1: 'R. Gen. Liberato Bittencourt, 1885a, sala 206',
     line2: 'Canto, Florianópolis — SC, 88075-000',
     mapsUrl:
       'https://maps.google.com/?q=R.+Gen.+Liberato+Bittencourt,+1885a+-+Canto,+Florianópolis+-+SC,+88075-000',
@@ -84,10 +84,6 @@ export const siteConfig = {
   ],
   usefulLinks: [
     {
-      label: 'Defensoria Pública/SC',
-      href: 'https://www.defensoria.sc.def.br/',
-    },
-    {
       label: 'Tabela de Honorários OAB/SC',
       href: 'https://oab-sc.org.br/api/files/file/1_32_67cb299793cd0.pdf',
     },
@@ -99,30 +95,29 @@ export const siteConfig = {
   specialties: [
     'Direito Civil',
     'Direito de Família',
-    'Curatela e Proteção Patrimonial',
     'Direito das Sucessões',
   ],
   hero: {
-    label: 'Advocacia em Civil, Família, Curatela e Sucessões',
-    headline: 'Proteger seus direitos exige quem entende da lei',
+    label: 'Advocacia em Civil, Família e Sucessões',
+    headline: 'Acolher, orientar e proteger seus direitos',
     subheadline:
-      'Atuação técnica, ágil e segura em Direito Civil, Direito de Família, Curatela e Proteção Patrimonial e Direito das Sucessões. Atendimento presencial em Florianópolis/SC e online para todo o Brasil.',
+      'Atuação técnica, ágil e segura em Direito Civil, Direito de Família e Direito das Sucessões. Atendimento presencial em Florianópolis/SC e online para todo o Brasil.',
     stats: [
-      { value: '+10', label: 'Anos de atuação' },
+      { value: '+10', label: 'Anos de experiência' },
       { value: '+500', label: 'Casos atendidos' },
-      { value: '4', label: 'Áreas de atuação' },
+      { value: '3', label: 'Áreas de atuação' },
       { value: '24h', label: 'Retorno via WhatsApp' },
     ],
   },
   servicesSection: {
     title: 'Áreas de atuação',
     description:
-      'Conheça as principais frentes de atendimento em Direito Civil, Direito de Família, Curatela e Proteção Patrimonial e Direito das Sucessões. Cada caso recebe análise individualizada.',
+      'Conheça as principais frentes de atendimento em Direito Civil, Direito de Família e Direito das Sucessões. Cada caso recebe análise individualizada.',
   },
   about: {
     headline: 'Advocacia com proximidade, técnica e respeito à sua história',
     paragraphs: [
-      'Sou advogada com atuação em Direito Civil, Direito de Família, Curatela e Proteção Patrimonial e Direito das Sucessões, auxiliando pessoas e famílias em decisões sensíveis — divórcios, guarda, pensão, inventários, curatela, contratos e conflitos do dia a dia — com linguagem acessível e estratégia jurídica sólida.',
+      'Sou advogada com atuação nas áreas de Direito Civil, Direito de Família e Direito das Sucessões, oferecendo assessoria jurídica em situações sensíveis e decisões importantes do cotidiano, como rescisões contratuais, cobranças, conflitos civis, divórcios, definição de guarda, pensão alimentícia, inventários e curatela — com linguagem acessível e estratégia jurídica.',
       'Acredito em um atendimento próximo, que escuta antes de orientar. Cada caso é único e merece análise cuidadosa, com transparência sobre caminhos, prazos e expectativas realistas.',
       'Meu compromisso é oferecer segurança jurídica em momentos de incerteza, buscando soluções que preservem direitos e, quando possível, reduzam desgastes desnecessários.',
     ],
@@ -156,13 +151,13 @@ export const siteConfig = {
       id: 'experiencia',
       title: 'Experiência consolidada',
       description:
-        'Mais de 10 anos de atuação e centenas de casos em Direito Civil, Família, Curatela e Sucessões — com análise técnica e histórico de resultados.',
+        'Mais de 10 anos de experiência jurídica e centenas de casos em Direito Civil, Família e Sucessões — com análise técnica e histórico de resultados.',
     },
     {
       id: 'modalidade',
       title: 'Presencial e online',
       description:
-        'Atendimento no bairro Canto, em Florianópolis, ou por videoconferência para clientes em Santa Catarina e em todo o Brasil.',
+        'Atendimento presencial em Florianópolis ou por videoconferência para clientes em Santa Catarina e em todo o Brasil.',
     },
   ],
   testimonialsSection: {
@@ -195,7 +190,7 @@ export const siteConfig = {
       id: 'curatela-1',
       name: 'Fernanda L.',
       initials: 'FL',
-      context: 'Curatela e Proteção Patrimonial',
+      context: 'Direito de Família — curatela',
       quote:
         'Em um momento delicado da família, a orientação foi humanizada e transparente. Acompanhou todo o processo de curatela com paciência e sempre disponível para tirar dúvidas.',
       rating: 5,
@@ -212,14 +207,19 @@ export const siteConfig = {
   ] satisfies Testimonial[],
   faq: [
     {
-      question: 'Como funciona a primeira consulta?',
+      question: 'Como funciona o primeiro atendimento?',
       answer:
-        'Você entra em contato pelo WhatsApp, descreve brevemente sua situação e recebe orientação sobre documentos, prazos e possíveis caminhos jurídicos. A partir daí, agendamos um atendimento mais detalhado, presencial ou online.',
+        'Você entra em contato pelo WhatsApp, descreve brevemente sua situação e recebe as informações sobre como funciona o atendimento e como agendar a consulta.',
+    },
+    {
+      question: 'Como funciona a consulta?',
+      answer:
+        'A consulta é um atendimento individual em que você apresenta sua situação com mais detalhes e recebe uma orientação jurídica clara sobre o caso, incluindo documentos necessários, prazos e possíveis caminhos jurídicos, além dos próximos passos.',
     },
     {
       question: 'O atendimento pode ser online?',
       answer:
-        'Sim. Consultas e acompanhamentos podem ser realizados por videoconferência, quando apropriado para o seu caso. Atendo em Florianópolis, Santa Catarina e em todo o Brasil.',
+        'Sim, o atendimento pode ser realizado online, por videoconferência, com a mesma qualidade e atenção do presencial. Atendo clientes em todo o Brasil.',
     },
     {
       question: 'Quais documentos devo separar antes do contato?',
@@ -252,24 +252,9 @@ export const siteConfig = {
         'O inventário extrajudicial é feito em cartório, mais rápido e econômico, quando todos os herdeiros são maiores, capazes e concordam com a partilha. O inventário judicial tramita no fórum e é necessário quando há menores, incapazes, testamento ou discordância entre herdeiros.',
     },
     {
-      question: 'Preciso de testamento para fazer a partilha de bens?',
-      answer:
-        'Não. Sem testamento, a partilha segue a ordem de herdeiros prevista em lei. O testamento permite organizar a destinação dos bens de forma personalizada. Oriento na elaboração, impugnação ou anulação de testamentos, conforme cada situação.',
-    },
-    {
-      question: 'O que é arrolamento de bens e quando ele é indicado?',
-      answer:
-        'O arrolamento é um procedimento mais simples e ágil de inventário, indicado quando o espólio tem poucos bens, todos os herdeiros concordam e não há testamento. Avalio se essa via é adequada ao seu caso ou se outro procedimento sucessório é mais seguro.',
-    },
-    {
       question: 'Quando é necessária uma ação de curatela?',
       answer:
         'A curatela é indicada quando uma pessoa não consegue, de forma parcial ou total, administrar seus bens e tomar decisões sobre sua vida — por deficiência, doença ou idade avançada. A ação judicial nomeia um curador para representar e proteger os interesses do incapaz.',
-    },
-    {
-      question: 'Qual a diferença entre curatela e tomada de decisão apoiada?',
-      answer:
-        'Na tomada de decisão apoiada, a pessoa escolhe apoiadores para auxiliá-la nas decisões, mantendo sua autonomia. Na curatela, o curador representa legalmente quem não tem capacidade para certos atos. Analiso qual medida de proteção é mais adequada a cada realidade.',
     },
     {
       question: 'Posso rescindir um contrato por inadimplemento da outra parte?',
@@ -358,25 +343,10 @@ export const siteConfig = {
         'Regulamentação de convivência (visitas)',
         'Investigação e reconhecimento de paternidade',
         'Alienação parental',
-        'Adoção',
-        'Destituição do poder familiar',
-      ],
-    },
-    {
-      id: 'curatela',
-      title: 'Curatela e Proteção Patrimonial',
-      description:
-        'Proteção de pessoas incapazes e regularização de representação legal para atos patrimoniais.',
-      message:
-        'Olá, Layana! Gostaria de falar sobre Curatela e Proteção Patrimonial.',
-      area: 'curatela',
-      items: [
         'Ação de curatela',
-        'Tomada de decisão apoiada',
         'Nomeação e substituição de curador',
         'Prestação de contas do curador',
-        'Medidas de proteção para pessoas incapazes',
-        'Regularização de representação legal para atos patrimoniais e bancários',
+        'Regularização de representação legal para atos pessoais, patrimoniais e bancários',
       ],
     },
     {

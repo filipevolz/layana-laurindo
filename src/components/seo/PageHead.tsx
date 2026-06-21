@@ -49,7 +49,7 @@ export function PageHead({
 }: PageHeadProps) {
   const canonical = getAbsoluteUrl(path)
   const image = ogImage ?? getOgImageUrl()
-  const ogDescription = description
+  const ogDescription = siteConfig.seo.ogDescription ?? description
 
   useEffect(() => {
     document.title = title

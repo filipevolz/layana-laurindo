@@ -1,6 +1,6 @@
 # Checklist pós-deploy — Google Search Console
 
-Use este guia após publicar as alterações de SEO em produção.
+Use este guia após publicar alterações de SEO em produção.
 
 ## 1. Submeter sitemap
 
@@ -9,20 +9,20 @@ Use este guia após publicar as alterações de SEO em produção.
 3. Vá em **Sitemaps** → adicione `https://layanalaurindo.com.br/sitemap.xml`
 4. Aguarde o status "Êxito" (pode levar algumas horas)
 
-## 2. Solicitar indexação das páginas P0
+## 2. Solicitar indexação da homepage
 
-No GSC, use **Inspeção de URL** para cada página abaixo e clique em **Solicitar indexação**:
+No GSC, use **Inspeção de URL** para a homepage e clique em **Solicitar indexação**:
 
 | Prioridade | URL |
 |------------|-----|
 | P0 | `https://layanalaurindo.com.br/` |
-| P0 | `https://layanalaurindo.com.br/advogada-direito-de-familia-florianopolis` |
-| P0 | `https://layanalaurindo.com.br/advogada-direito-civil-florianopolis` |
-| P0 | `https://layanalaurindo.com.br/advogada-curatela-florianopolis` |
-| P0 | `https://layanalaurindo.com.br/advogada-inventario-florianopolis` |
 
-Depois, solicite indexação das páginas de tópico:
+As URLs legadas abaixo redirecionam (301) para a homepage e continuam úteis para capturar buscas locais:
 
+- `/advogada-direito-de-familia-florianopolis`
+- `/advogada-direito-civil-florianopolis`
+- `/advogada-curatela-florianopolis`
+- `/advogada-inventario-florianopolis`
 - `/servicos/divorcio-florianopolis`
 - `/servicos/inventario-extrajudicial`
 - `/servicos/pensao-alimenticia`
@@ -32,7 +32,7 @@ Depois, solicite indexação das páginas de tópico:
 
 | Métrica | Onde verificar | Ação se houver problema |
 |---------|----------------|-------------------------|
-| Páginas indexadas | GSC → Páginas | Se "Descoberta, mas não indexada": verificar conteúdo único e solicitar reindexação |
+| Páginas indexadas | GSC → Páginas | Se "Descoberta, mas não indexada": reforçar conteúdo answer-first e solicitar reindexação |
 | Impressões por query | GSC → Desempenho → Consultas | Acompanhar queries locais P0 |
 | Rich results | GSC → Melhorias → FAQ | Validar FAQPage schema |
 | Erros de rastreamento | GSC → Páginas → Não indexadas | Corrigir URLs quebradas ou redirects |
@@ -52,17 +52,17 @@ Monitore impressões e posição média para:
 Antes e depois do deploy, verifique:
 
 - [ ] `https://layanalaurindo.com.br/robots.txt` acessível
-- [ ] `https://layanalaurindo.com.br/sitemap.xml` lista 9 URLs
+- [ ] `https://layanalaurindo.com.br/sitemap.xml` lista a homepage com `lastmod` atualizado
 - [ ] Preview OG correto (compartilhar URL no WhatsApp/Telegram)
-- [ ] JSON-LD válido ([Rich Results Test](https://search.google.com/test/rich-results))
+- [ ] JSON-LD válido ([Rich Results Test](https://search.google.com/test/rich-results)) — FAQPage + LegalService + catálogo de serviços
 
 ## 6. Cadência de iteração (mensal)
 
 1. Exportar top 20 queries do GSC
-2. Páginas com queda de impressões: atualizar `updatedAt` e reforçar conteúdo answer-first
-3. Páginas com crescimento: adicionar links internos de/para páginas relacionadas
-4. Queries novas com intenção comercial: avaliar nova landing page em `landing-pages.ts`
+2. Homepage com queda de impressões: atualizar `updatedAt` em `site-config.ts` e reforçar conteúdo answer-first
+3. Queries novas com intenção comercial: avaliar nova seção na homepage ou landing page dedicada
+4. Queries de curatela: garantir menção em Direito de Família, FAQ e `knowsAbout`
 
 ## 7. Prerender (se necessário)
 
-Se após 2 semanas páginas programáticas permanecerem como "Descoberta, mas não indexada", considerar prerender estático no build (`vite-plugin-prerender` ou similar) para servir HTML completo no primeiro byte.
+Se após 2 semanas a homepage permanecer como "Descoberta, mas não indexada", considerar prerender estático no build (`vite-plugin-prerender` ou similar) para servir HTML completo no primeiro byte.

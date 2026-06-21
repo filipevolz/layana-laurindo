@@ -104,11 +104,7 @@ function ServiceCard({
   const Icon = serviceIcons[category.id]
 
   return (
-    <Reveal
-      variant="up"
-      staggerIndex={index}
-      className={cn('h-full', category.featured && 'sm:col-span-2')}
-    >
+    <Reveal variant="up" staggerIndex={index} className="h-full">
       <GoldBorderCard
         animationIndex={index}
         featured={category.featured}
@@ -183,7 +179,7 @@ export function ServicesSection() {
       </div>
 
       <div className="container-narrow">
-        <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
+        <div className="grid gap-4 sm:gap-6">
           {siteConfig.serviceCategories.map((category, index) => (
             <ServiceCard key={category.id} category={category} index={index} />
           ))}

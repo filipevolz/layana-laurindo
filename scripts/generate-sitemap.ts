@@ -1,8 +1,7 @@
 import { writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
-const siteUrl = 'https://layanalaurindo.com.br'
-const updatedAt = '2026-06-01'
+import { siteConfig } from '../src/lib/site-config'
 
 const urls = [{ path: '/', priority: 1.0, changefreq: 'weekly' as const }]
 
@@ -11,8 +10,8 @@ const xml = `<?xml version="1.0" encoding="UTF-8"?>
 ${urls
   .map(
     (url) => `  <url>
-    <loc>${siteUrl}${url.path === '/' ? '/' : url.path}</loc>
-    <lastmod>${updatedAt}</lastmod>
+    <loc>${siteConfig.seo.siteUrl}${url.path === '/' ? '/' : url.path}</loc>
+    <lastmod>${siteConfig.seo.updatedAt}</lastmod>
     <changefreq>${url.changefreq}</changefreq>
     <priority>${url.priority.toFixed(1)}</priority>
   </url>`,
