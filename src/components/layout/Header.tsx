@@ -87,7 +87,7 @@ export function Header() {
           : 'border-b border-border/60 bg-background/95 backdrop-blur-sm',
       )}
     >
-      <div className="container-narrow flex h-16 items-center justify-between px-4 sm:h-[4.5rem] sm:px-6 lg:px-8">
+      <div className="container-narrow flex h-16 items-center justify-between px-4 md:px-6 lg:px-8 xl:px-0">
         <Link to="/" className="group flex items-center gap-3">
           <span
             className={cn(

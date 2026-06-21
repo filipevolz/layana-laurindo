@@ -60,7 +60,7 @@ export function HeroSection() {
         </div>
 
         <div className="flex min-h-0 flex-1 items-center justify-center py-2 md:items-stretch md:py-0">
-          <Reveal variant="right" delay={200} immediate className="flex h-full w-full justify-center">
+          <Reveal variant="right" delay={200} immediate className="flex h-full w-full justify-end">
             <ResponsiveImage
               {...responsiveImages.hero}
               alt="Layana Laurindo, advogada, retrato profissional com fundo de madeira"
