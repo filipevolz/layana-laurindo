@@ -5,11 +5,7 @@ import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 import { SkipLink } from '@/components/layout/SkipLink'
 import { WhatsAppButton } from '@/components/layout/WhatsAppButton'
-import {
-  landingPages,
-} from '@/lib/landing-pages'
 import { HomePage } from '@/pages/HomePage'
-import { LandingPageView } from '@/pages/LandingPageView'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 
@@ -53,13 +49,6 @@ function App() {
     <AppLayout>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        {landingPages.map((page) => (
-          <Route
-            key={page.path}
-            path={page.path}
-            element={<LandingPageView page={page} />}
-          />
-        ))}
         <Route
           path="*"
           element={

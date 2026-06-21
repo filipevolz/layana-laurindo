@@ -1,3 +1,45 @@
 {
+  "redirects": [
+    {
+      "source": "/advogada-direito-de-familia-florianopolis",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/advogada-direito-civil-florianopolis",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/advogada-curatela-florianopolis",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/advogada-inventario-florianopolis",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/divorcio-florianopolis",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/inventario-extrajudicial",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/pensao-alimenticia",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/curatela-incapaz",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }

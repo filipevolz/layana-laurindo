@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 
 import { OpensInNewTabHint } from '@/components/a11y/OpensInNewTabHint'
 import { buildWhatsAppUrl, siteConfig } from '@/lib/site-config'
-import { landingPages } from '@/lib/landing-pages'
 
 function FooterColumn({
   title,
@@ -61,12 +60,10 @@ function FooterLinkList({
   )
 }
 
-const areaLinks = landingPages
-  .filter((page) => page.type === 'area')
-  .map((page) => ({
-    label: page.breadcrumbLabel,
-    href: page.path,
-  }))
+const areaLinks = siteConfig.serviceCategories.map((category) => ({
+  label: category.title,
+  href: '#servicos',
+}))
 
 export function Footer() {
   const year = new Date().getFullYear()
