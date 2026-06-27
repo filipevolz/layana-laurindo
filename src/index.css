@@ -49,15 +49,15 @@
 :root {
   --radius: 0.75rem;
 
-  --background: #f7f3ec;
+  --background: #FAF8F3;
   --foreground: #3c3c3c;
   --card: #ffffff;
   --card-foreground: #3c3c3c;
   --popover: #ffffff;
   --popover-foreground: #3c3c3c;
 
-  --primary: #2d241b;
-  --primary-hover: #3e3227;
+  --primary: #3D3933;
+  --primary-hover: #4D473F;
   --primary-foreground: #f7f3ec;
   --secondary: #f0ebe3;
   --secondary-foreground: #3c3c3c;
@@ -204,6 +204,13 @@
 
   .bg-hero {
     background-color: var(--background);
+  }
+
+  .hero-strokes {
+    background-image: url('/images/hero-background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   .hero-viewport {
