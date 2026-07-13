@@ -126,6 +126,20 @@
       ],
       "method": "copy",
       "global": false
+    },
+    "seo": {
+      "name": "seo",
+      "source": "local",
+      "contentHash": "fc9897a3923b5e23e00545ac67f4c8c2b6903113bd5f046cda259c98a0f3cd40",
+      "installedAt": "2026-07-13T19:14:12.061Z",
+      "updatedAt": "2026-07-13T19:14:12.067Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "windsurf"
+      ],
+      "method": "copy",
+      "global": false
     }
   }
 }
