@@ -2,6 +2,10 @@ import { MessageCircle } from 'lucide-react'
 
 import { OpensInNewTabHint } from '@/components/a11y/OpensInNewTabHint'
 import { Button } from '@/components/ui/button'
+import {
+  trackWhatsAppClick,
+  type WhatsAppPlacement,
+} from '@/lib/analytics'
 import { buildWhatsAppUrl } from '@/lib/site-config'
 import { cn } from '@/lib/utils'
 
@@ -12,6 +16,7 @@ interface WhatsAppLinkProps {
   variant?: 'default' | 'outline' | 'secondary' | 'ghost' | 'link' | 'destructive'
   size?: 'default' | 'xs' | 'sm' | 'lg' | 'icon'
   showIcon?: boolean
+  placement?: WhatsAppPlacement
 }
 
 export function WhatsAppLink({
@@ -21,6 +26,7 @@ export function WhatsAppLink({
   variant = 'default',
   size = 'default',
   showIcon = true,
+  placement = 'contact',
 }: WhatsAppLinkProps) {
   return (
     <Button
@@ -33,6 +39,7 @@ export function WhatsAppLink({
         href={buildWhatsAppUrl(message)}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => trackWhatsAppClick(placement)}
       >
         {showIcon && <MessageCircle aria-hidden="true" />}
         {children}

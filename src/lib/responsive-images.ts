@@ -6,9 +6,9 @@ export interface ResponsiveImageConfig {
 
 export const responsiveImages = {
   hero: {
-    src: '/images/layana-hero.png',
-    width: 408,
-    height: 612,
+    src: '/images/layana-hero.jpg',
+    width: 683,
+    height: 1024,
   },
   office: {
     src: '/images/layana-office.png',

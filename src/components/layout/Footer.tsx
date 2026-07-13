@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import { OpensInNewTabHint } from '@/components/a11y/OpensInNewTabHint'
+import { trackWhatsAppClick } from '@/lib/analytics'
 import { buildWhatsAppUrl, siteConfig } from '@/lib/site-config'
 
 function FooterColumn({
@@ -127,6 +128,7 @@ export function Footer() {
                   className="transition-colors hover:text-brand"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackWhatsAppClick('footer')}
                 >
                   Falar com Layana
                   <OpensInNewTabHint />

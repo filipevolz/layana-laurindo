@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { trackWhatsAppClick } from '@/lib/analytics'
 import { serviceIcons } from '@/lib/service-icons'
 import {
   buildWhatsAppUrl,
@@ -82,6 +83,9 @@ function ServiceCardLink({ category }: { category: ServiceCategory }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Saiba mais sobre ${category.title}`}
+      onClick={() =>
+        trackWhatsAppClick('services', { serviceId: category.id })
+      }
       className="mt-5 -my-2 inline-flex items-center gap-1 py-2 text-sm font-semibold text-brand transition-colors hover:text-brand-accent"
     >
       Saiba mais

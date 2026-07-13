@@ -66,3 +66,15 @@ Antes e depois do deploy, verifique:
 ## 7. Prerender (se necessário)
 
 Se após 2 semanas a homepage permanecer como "Descoberta, mas não indexada", considerar prerender estático no build (`vite-plugin-prerender` ou similar) para servir HTML completo no primeiro byte.
+
+A rota 404 já publica `noindex, nofollow` via `PageHead` para evitar soft-404 indexável.
+
+## 8. Google Ads / conversões (pós-deploy)
+
+1. Criar container GTM **ou** IDs GA4 + Google Ads
+2. Copiar `.env.example` → `.env` / vars da Vercel e preencher:
+   - `VITE_GTM_ID` (preferencial), **ou**
+   - `VITE_GA_MEASUREMENT_ID` + `VITE_GOOGLE_ADS_ID` + `VITE_GOOGLE_ADS_CONVERSION_LABEL`
+3. No GTM: trigger no evento `whatsapp_click` (dataLayer) → tag de conversão Ads + evento GA4 `generate_lead`
+4. Testar cliques (hero, header, float, footer, contato, serviços) no [Tag Assistant](https://tagassistant.google.com/)
+5. Conferir conversões no Google Ads após 24–48h

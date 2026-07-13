@@ -29,6 +29,7 @@ export function ContactSection() {
           </p>
           <WhatsAppLink
             message={siteConfig.defaultWhatsAppMessage}
+            placement="contact"
             variant="secondary"
             className="font-semibold"
           >

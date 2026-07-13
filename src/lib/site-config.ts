@@ -31,17 +31,18 @@ export const siteConfig = {
   seo: {
     siteUrl: 'https://layanalaurindo.com.br',
     siteName: 'Layana Laurindo — Advocacia',
-    defaultTitle: 'Layana Laurindo | Advogada — Direito Civil e de Família',
+    defaultTitle:
+      'Layana Laurindo | Advogada em Florianópolis — Civil, Família e Sucessões',
     defaultDescription:
-      'Layana Laurindo, advogada em Florianópolis. Atuação em Direito Civil, Direito de Família, Curatela e Sucessões. Agende sua consulta pelo WhatsApp.',
+      'Layana Laurindo, advogada em Florianópolis (OAB/SC 71.645). Atuação em Direito Civil, Direito de Família — divórcio, guarda, pensão e curatela — e Direito das Sucessões. Agende consulta pelo WhatsApp.',
     ogDescription:
-      'Orientação jurídica clara e humanizada. Divórcio, guarda, pensão, inventário, curatela, contratos e mais. Fale pelo WhatsApp.',
-    ogImage: '/images/layana-hero.png',
+      'Orientação jurídica clara e humanizada em Florianópolis/SC. Divórcio, guarda, pensão, curatela, inventário, contratos e mais. Atendimento presencial e online.',
+    ogImage: '/images/layana-hero.jpg',
     ogImageAlt: 'Layana Laurindo, advogada em Florianópolis',
     locale: 'pt_BR',
     themeColor: '#2D241B',
-    updatedAt: '2026-06-01',
-    updatedAtLabel: 'junho de 2026',
+    updatedAt: '2026-07-13',
+    updatedAtLabel: 'julho de 2026',
   },
   name: 'Layana Laurindo',
   title: 'Advogada',
@@ -99,9 +100,10 @@ export const siteConfig = {
   ],
   hero: {
     label: 'Advocacia em Civil, Família e Sucessões',
-    headline: 'Acolher, orientar e proteger seus direitos',
+    headline:
+      'Acolhimento e orientação jurídica para proteger os seus direitos.',
     subheadline:
-      'Atuação técnica, ágil e segura em Direito Civil, Direito de Família e Direito das Sucessões. Atendimento presencial em Florianópolis/SC e online para todo o Brasil.',
+      'Advogada especializada em Direito Civil, Direito de Família e Sucessões, oferecendo atendimento personalizado, presencial em Florianópolis e online para todo o Brasil.',
     stats: [
       { value: '+10', label: 'Anos de experiência' },
       { value: '+500', label: 'Casos atendidos' },
@@ -369,7 +371,7 @@ export const siteConfig = {
   ] satisfies ServiceCategory[],
   images: {
     logo: '/images/logo.png',
-    hero: '/images/layana-hero.png',
+    hero: '/images/layana-hero.jpg',
     heroCutout: '/images/layana-hero-cutout.png',
     office: '/images/layana-office.png',
     portrait: '/images/layana-portrait.png',

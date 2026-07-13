@@ -1,11 +1,13 @@
 import { useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 
+import { AnalyticsBootstrap } from '@/components/AnalyticsBootstrap'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 import { SkipLink } from '@/components/layout/SkipLink'
 import { WhatsAppButton } from '@/components/layout/WhatsAppButton'
 import { HomePage } from '@/pages/HomePage'
+import { NotFoundPage } from '@/pages/NotFoundPage'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 
@@ -38,6 +40,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
       </main>
       <Footer />
       <WhatsAppButton />
+      <AnalyticsBootstrap />
       <Analytics />
       <SpeedInsights />
     </>
@@ -49,21 +52,7 @@ function App() {
     <AppLayout>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route
-          path="*"
-          element={
-            <div className="section-padding container-narrow pt-32 text-center">
-              <h1 className="text-section-title font-display mb-4 font-bold text-brand">
-                Página não encontrada
-              </h1>
-              <p className="text-muted-foreground">
-                <a href="/" className="text-brand hover:underline">
-                  Voltar ao início
-                </a>
-              </p>
-            </div>
-          }
-        />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </AppLayout>
   )
