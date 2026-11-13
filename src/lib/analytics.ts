@@ -34,7 +34,7 @@ function loadGtagScript(primaryId: string) {
 
   window.dataLayer = window.dataLayer ?? []
   // gtag oficial usa Arguments (não array) no dataLayer
-  window.gtag = function gtag(..._args: unknown[]) {
+  window.gtag = function gtag() {
     // eslint-disable-next-line prefer-rest-params
     window.dataLayer?.push(arguments as unknown as Record<string, unknown>)
   }

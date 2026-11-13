@@ -46,4 +46,9 @@ function Badge({
   )
 }
 
-export { Badge, badgeVariants }
+export {
+  Badge,
+  // Variants helper co-located with Badge (shadcn pattern)
+  // eslint-disable-next-line react-refresh/only-export-components
+  badgeVariants,
+}

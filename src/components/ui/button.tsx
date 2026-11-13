@@ -64,4 +64,9 @@ function Button({
   )
 }
 
-export { Button, buttonVariants }
+export {
+  Button,
+  // Variants helper co-located with Button (shadcn pattern)
+  // eslint-disable-next-line react-refresh/only-export-components
+  buttonVariants,
+}
