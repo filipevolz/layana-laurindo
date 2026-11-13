@@ -7,15 +7,19 @@ import { buildWhatsAppUrl, siteConfig } from '@/lib/site-config'
 function FooterColumn({
   title,
   children,
+  className,
 }: {
   title?: string
   children: React.ReactNode
+  className?: string
 }) {
   return (
-    <div className="space-y-4">
-      <h3 className="text-xs font-bold tracking-[0.15em] text-brand uppercase font-sans">
-        {title}
-      </h3>
+    <div className={className}>
+      {title ? (
+        <h3 className="mb-[18px] font-sans text-[11px] font-semibold tracking-[0.22em] text-dourado-escuro uppercase">
+          {title}
+        </h3>
+      ) : null}
       {children}
     </div>
   )
@@ -27,13 +31,13 @@ function FooterLinkList({
   items: readonly { label: string; href: string; external?: boolean }[]
 }) {
   return (
-    <ul className="space-y-2.5">
+    <ul className="m-0 flex list-none flex-col gap-2.5 p-0">
       {items.map((item) => (
-        <li key={item.href}>
+        <li key={`${item.label}-${item.href}`}>
           {item.external || item.href.startsWith('http') ? (
             <a
               href={item.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-brand"
+              className="text-sm text-texto no-underline transition-colors hover:text-dourado-escuro"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -43,14 +47,14 @@ function FooterLinkList({
           ) : item.href.startsWith('#') ? (
             <Link
               to={{ pathname: '/', hash: item.href }}
-              className="text-sm text-muted-foreground transition-colors hover:text-brand"
+              className="text-sm text-texto no-underline transition-colors hover:text-dourado-escuro"
             >
               {item.label}
             </Link>
           ) : (
             <Link
               to={item.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-brand"
+              className="text-sm text-texto no-underline transition-colors hover:text-dourado-escuro"
             >
               {item.label}
             </Link>
@@ -70,34 +74,30 @@ export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="safe-bottom border-t border-brand/15 bg-services text-foreground">
-      <div className="container-narrow section-padding">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5 lg:gap-8">
-          <FooterColumn>
-            <Link to="/" className="group inline-flex items-center">
+    <footer className="bg-creme pt-20 pb-[max(40px,env(safe-area-inset-bottom))] text-sm text-texto">
+      <div className="container-narrow px-5 sm:px-8">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 min-[900px]:grid-cols-[1.4fr_repeat(3,1fr)_1.3fr]">
+          <FooterColumn className="sm:col-span-2 min-[900px]:col-span-1">
+            <Link to="/" className="inline-flex items-center gap-4 text-marrom no-underline">
               <img
                 src={siteConfig.images.logo}
                 alt=""
-                width={42}
-                height={42}
-                className="size-16 shrink-0 object-contain"
+                width={52}
+                height={52}
+                className="size-[52px] shrink-0 object-contain"
                 aria-hidden="true"
               />
-              <span className="-ml-2 leading-tight">
-                <span className="block text-lg font-bold tracking-tight text-brand uppercase">
-                  Layana
+              <span className="leading-tight">
+                <span className="block font-display text-[26px] leading-none font-medium">
+                  {siteConfig.name}
                 </span>
-                <span className="block text-[0.65rem] font-semibold tracking-[0.2em] uppercase mb-1.5 text-brand/80">
-                  Laurindo
+                <span className="mt-[5px] block text-[11px] tracking-[0.22em] text-texto-suave uppercase">
+                  {siteConfig.title}
                 </span>
               </span>
             </Link>
-            <p className="text-sm leading-relaxed text-muted-foreground">
-              {siteConfig.description}
-            </p>
-            <p className="text-sm font-medium text-muted-foreground">
-              {siteConfig.oab}
-            </p>
+            <p className="mt-[18px] leading-[1.7]">{siteConfig.description}</p>
+            <p className="mt-[18px]">{siteConfig.oab}</p>
           </FooterColumn>
 
           <FooterColumn title="Menu">
@@ -118,105 +118,103 @@ export function Footer() {
           </FooterColumn>
 
           <FooterColumn title="Contato">
-            <ul className="space-y-4 text-sm text-muted-foreground">
-              <li>
-                <span className="mb-1 block font-semibold text-foreground">
-                  WhatsApp
-                </span>
-                <a
-                  href={buildWhatsAppUrl(siteConfig.defaultWhatsAppMessage)}
-                  className="transition-colors hover:text-brand"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => trackWhatsAppClick('footer')}
-                >
-                  Falar com Layana
-                  <OpensInNewTabHint />
-                </a>
-              </li>
-              <li>
-                <span className="mb-1 block font-semibold text-foreground">
-                  Instagram
-                </span>
-                <a
-                  href={siteConfig.social.instagram.href}
-                  className="transition-colors hover:text-brand"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {siteConfig.social.instagram.label}
-                  <OpensInNewTabHint />
-                </a>
-              </li>
-              <li>
-                <span className="mb-1 block font-semibold text-foreground">
-                  LinkedIn
-                </span>
-                <a
-                  href={siteConfig.social.linkedin.href}
-                  className="transition-colors hover:text-brand"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {siteConfig.social.linkedin.label}
-                  <OpensInNewTabHint />
-                </a>
-              </li>
-              <li>
-                <span className="mb-1 block font-semibold text-foreground">
-                  E-mail
-                </span>
-                <a
-                  href={`mailto:${siteConfig.email}`}
-                  className="transition-colors hover:text-brand"
-                >
-                  {siteConfig.email}
-                </a>
-              </li>
-              <li>
-                <span className="mb-1 block font-semibold text-foreground">
-                  Localização
-                </span>
-                <address className="not-italic leading-relaxed">
+            <dl className="m-0 flex flex-col gap-3.5">
+              <div>
+                <dt className="font-semibold text-marrom">WhatsApp</dt>
+                <dd className="mt-[3px] leading-relaxed">
                   <a
-                    href={siteConfig.address.mapsUrl}
-                    className="transition-colors hover:text-brand"
+                    href={buildWhatsAppUrl(siteConfig.defaultWhatsAppMessage)}
+                    className="text-texto no-underline transition-colors hover:text-dourado-escuro"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => trackWhatsAppClick('footer')}
+                  >
+                    Falar com Layana
+                    <OpensInNewTabHint />
+                  </a>
+                </dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-marrom">Instagram</dt>
+                <dd className="mt-[3px] leading-relaxed">
+                  <a
+                    href={siteConfig.social.instagram.href}
+                    className="text-texto no-underline transition-colors hover:text-dourado-escuro"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {siteConfig.address.line1}
-                    <br />
-                    {siteConfig.address.line2}
+                    {siteConfig.social.instagram.label}
                     <OpensInNewTabHint />
                   </a>
-                </address>
-              </li>
-            </ul>
+                </dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-marrom">LinkedIn</dt>
+                <dd className="mt-[3px] leading-relaxed">
+                  <a
+                    href={siteConfig.social.linkedin.href}
+                    className="text-texto no-underline transition-colors hover:text-dourado-escuro"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {siteConfig.social.linkedin.label}
+                    <OpensInNewTabHint />
+                  </a>
+                </dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-marrom">E-mail</dt>
+                <dd className="mt-[3px] leading-relaxed">
+                  <a
+                    href={`mailto:${siteConfig.email}`}
+                    className="text-texto no-underline transition-colors hover:text-dourado-escuro"
+                  >
+                    {siteConfig.email}
+                  </a>
+                </dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-marrom">Localização</dt>
+                <dd className="mt-[3px] leading-relaxed">
+                  <address className="not-italic">
+                    <a
+                      href={siteConfig.address.mapsUrl}
+                      className="text-texto no-underline transition-colors hover:text-dourado-escuro"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {siteConfig.address.line1}
+                      <br />
+                      {siteConfig.address.line2}
+                      <OpensInNewTabHint />
+                    </a>
+                  </address>
+                </dd>
+              </div>
+            </dl>
           </FooterColumn>
         </div>
 
-        <div className="mt-10 overflow-hidden rounded-xl border border-brand/15 shadow-sm">
+        <div className="mt-14 h-[280px] overflow-hidden border border-linha bg-creme-claro">
           <iframe
             src={siteConfig.address.mapsEmbedUrl}
             title="Localização do escritório no mapa"
-            className="h-48 w-full sm:h-56 md:h-64"
+            className="h-full w-full border-0"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             allowFullScreen
           />
         </div>
 
-        <div className="mt-10 border-t border-brand/15 pt-6 text-xs leading-relaxed text-muted-foreground">
-          <p>
+        <div className="mt-10 flex flex-col gap-2 border-t border-linha pt-6 text-xs leading-relaxed text-texto-suave">
+          <span>
             © {year} {siteConfig.name}. Todos os direitos reservados.
-          </p>
-          <p className="mt-2">
-            Atualizado em {siteConfig.seo.updatedAtLabel}.
-          </p>
-          <p className="mt-2">
-            Este site tem caráter informativo e não substitui consulta jurídica
-            personalizada. O conteúdo não configura promessa de resultado.
-          </p>
+          </span>
+          <span>Atualizado em {siteConfig.seo.updatedAtLabel}.</span>
+          <span>
+            Este site tem caráter informativo e não substitui consulta jurídica personalizada. O
+            conteúdo não configura promessa de resultado.
+          </span>
         </div>
       </div>
     </footer>
