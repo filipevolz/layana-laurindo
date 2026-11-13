@@ -1,5 +1,4 @@
 import type { CSSProperties, ElementType, ReactNode } from 'react'
-import { useEffect, useState } from 'react'
 
 import { useReveal } from '@/hooks/use-reveal'
 import { cn } from '@/lib/utils'
@@ -35,15 +34,7 @@ export function Reveal({
   immediate = false,
 }: RevealProps) {
   const { ref, visible: inView } = useReveal({ once })
-  const [immediateVisible, setImmediateVisible] = useState(false)
-
-  useEffect(() => {
-    if (immediate) {
-      setImmediateVisible(true)
-    }
-  }, [immediate])
-
-  const visible = immediate ? immediateVisible : inView
+  const visible = immediate || inView
 
   const style = {
     ...(delay !== undefined && { transitionDelay: `${delay}ms` }),

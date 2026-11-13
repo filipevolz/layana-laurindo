@@ -1,75 +1,74 @@
-import { GoldBorderCard } from '@/components/GoldBorderCard'
-import { Reveal } from '@/components/Reveal'
 import { ResponsiveImage } from '@/components/ResponsiveImage'
-import { Badge } from '@/components/ui/badge'
-import { CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Etiqueta, Filete, Moldura } from '@/components/layout/LayoutPrimitives'
 import { responsiveImages } from '@/lib/responsive-images'
 import { siteConfig } from '@/lib/site-config'
-import { trustIcons } from '@/lib/trust-icons'
+
+const ROMAN = ['I.', 'II.', 'III.', 'IV.', 'V.', 'VI.'] as const
+const TRUST_EMPHASIS = 'proximidade'
+const TRUST_HEADLINE = 'Confiança construída com técnica e proximidade'
+const TRUST_INTRO =
+  'Cada atendimento une conhecimento jurídico, comunicação clara e respeito ao momento vivido.'
+
+function TrustTitle({ headline }: { headline: string }) {
+  const index = headline.indexOf(TRUST_EMPHASIS)
+
+  if (index === -1) {
+    return headline
+  }
+
+  return (
+    <>
+      {headline.slice(0, index)}
+      <em className="text-dourado-luz">{headline.slice(index)}</em>
+    </>
+  )
+}
 
 export function TrustSection() {
   return (
-    <section
-      id="diferenciais"
-      className="section-padding bg-services text-foreground"
-      aria-labelledby="trust-heading"
-    >
-      <div className="container-narrow">
-        <Reveal variant="up">
-          <div className="mb-6 flex flex-col items-center space-y-4 text-center">
-          <Badge className="rounded-full font-bold bg-brand/10 text-brand hover:bg-brand/15">
-            Diferenciais
-          </Badge>
+    <section id="diferenciais" className="bg-marrom text-creme" aria-labelledby="trust-heading">
+      <div className="container-narrow px-5 py-[72px] sm:px-8 sm:py-[104px]">
+        <div className="flex flex-col gap-[18px]">
+          <Etiqueta className="text-dourado-claro">Diferenciais</Etiqueta>
           <h2
             id="trust-heading"
-            className="text-section-title font-display mx-auto text-brand"
+            className="font-display text-[clamp(34px,4vw,48px)] leading-[1.1] font-medium text-creme"
           >
-            Confiança construída com técnica e proximidade
+            <TrustTitle headline={TRUST_HEADLINE} />
           </h2>
-          <p className="mx-auto leading-relaxed text-foreground">
-          Cada atendimento une conhecimento jurídico, comunicação clara e respeito ao momento vivido.
-          </p>
+          <Filete className="bg-dourado-claro" />
+          <p className="max-w-[640px] text-[17px] leading-[1.7] text-texto-claro">{TRUST_INTRO}</p>
         </div>
-        </Reveal>
 
-        <div className="grid items-center gap-6 md:grid-cols-[minmax(0,280px)_1fr] md:gap-8 lg:grid-cols-[1fr_1.1fr] lg:gap-8">
-          <Reveal variant="left">
-            <ResponsiveImage
-              {...responsiveImages.portrait}
-              alt="Layana Laurindo em ambiente de escritório sofisticado, postura confiante"
-              className="mx-auto aspect-[4/5] w-full max-w-sm rounded-xl object-cover md:max-w-none lg:mx-0"
-              loading="lazy"
-            />
-          </Reveal>
+        <div className="mt-14 flex flex-wrap items-center gap-10 sm:gap-16">
+          <div className="min-w-0 flex-[1_1_360px]">
+            <Moldura
+              className="[&>span]:border-dourado!"
+              recorteClassName="aspect-[4/5] shadow-none"
+            >
+              <ResponsiveImage
+                {...responsiveImages.portrait}
+                alt="Layana Laurindo sentada em poltrona no escritório"
+                loading="lazy"
+              />
+            </Moldura>
+          </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            {siteConfig.trustPoints.map((point, index) => {
-              const Icon = trustIcons[point.id]
-
-              return (
-                <Reveal key={point.id} variant="up" staggerIndex={index}>
-                  <GoldBorderCard animationIndex={index}>
-                    <CardHeader className="flex flex-row items-center gap-2">
-                      {Icon && (
-                        <Icon
-                          className="size-6 text-brand"
-                          strokeWidth={1.5}
-                          aria-hidden="true"
-                        />
-                      )}
-                      <CardTitle className="font-sans text-lg text-foreground">
-                        {point.title}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-sm leading-relaxed text-muted-foreground">
-                        {point.description}
-                      </p>
-                    </CardContent>
-                  </GoldBorderCard>
-                </Reveal>
-              )
-            })}
+          <div className="grid min-w-0 flex-[1.4_1_520px] grid-cols-1 gap-9 min-[760px]:grid-cols-2 min-[760px]:gap-x-10">
+            {siteConfig.trustPoints.map((point, index) => (
+              <div
+                key={point.id}
+                className="flex flex-col gap-2.5 border-t border-linha-escura pt-5"
+              >
+                <span className="font-display text-lg text-dourado-claro italic">
+                  {ROMAN[index] ?? `${index + 1}.`}
+                </span>
+                <h3 className="font-display text-[26px] font-medium text-creme">{point.title}</h3>
+                <p className="text-[15px] leading-[1.7] font-light text-texto-claro">
+                  {point.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

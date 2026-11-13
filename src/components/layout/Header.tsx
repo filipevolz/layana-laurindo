@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, MessageCircle } from 'lucide-react'
 
@@ -7,6 +7,7 @@ import { buildWhatsAppUrl, siteConfig } from '@/lib/site-config'
 import { cn } from '@/lib/utils'
 
 import logo from '../../../public/images/logo.png'
+import { layoutBtnClass } from './LayoutPrimitives'
 import { Button } from '../ui/button'
 import {
   Sheet,
@@ -17,66 +18,44 @@ import {
 } from '../ui/sheet'
 
 const NAV_ITEMS = [
-  { label: 'Sobre', hash: '' },
+  { label: 'Sobre', hash: '#sobre' },
   { label: 'Serviços', hash: '#servicos' },
-  { label: 'Contato', hash: '#contato' },
   { label: 'Diferenciais', hash: '#diferenciais' },
   { label: 'Perguntas frequentes', hash: '#faq' },
+  { label: 'Contato', hash: '#contato' },
 ] as const
-
-function isNavItemActive(currentHash: string, itemHash: string) {
-  if (!itemHash) {
-    return !currentHash
-  }
-
-  return currentHash === itemHash
-}
 
 export function Header() {
   const { hash } = useLocation()
-  const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const whatsappHref = buildWhatsAppUrl(siteConfig.defaultWhatsAppMessage)
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8)
-
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
   return (
-    <header
-      className={cn(
-        'fixed top-0 z-50 h-[70px] w-full transition-[background-color,backdrop-filter,box-shadow] duration-300',
-        scrolled
-          ? 'bg-background/90 shadow-[0_1px_0_0] shadow-border/30 backdrop-blur-xl backdrop-saturate-150 supports-backdrop-filter:bg-background/85'
-          : 'bg-background',
-      )}
-    >
-      <div className="container-narrow flex h-full items-center justify-between px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 border-b border-linha bg-creme">
+      <div className="container-narrow flex flex-wrap items-center justify-between gap-6 px-5 py-[22px] sm:px-8">
         <Link to="/" className="relative z-10 flex items-center">
           <img src={logo} alt="Layana Laurindo" width={70} height={60} />
         </Link>
 
         <nav
-          className="relative z-10 hidden items-center gap-1 rounded-full border border-border/70 bg-background/95 px-1.5 py-1 shadow-sm backdrop-blur-sm supports-backdrop-filter:bg-background/90 lg:flex"
+          className="relative z-10 hidden items-center gap-7 lg:flex"
           aria-label="Navegação principal"
         >
           {NAV_ITEMS.map((item) => {
-            const active = isNavItemActive(hash, item.hash)
+            // Binding HTML marks Sobre as current on first paint (empty hash).
+            const active =
+              hash === item.hash || (!hash && item.hash === '#sobre')
 
             return (
               <Link
-                key={item.hash || 'sobre'}
+                key={item.hash}
                 to={{ pathname: '/', hash: item.hash }}
+                aria-current={active ? 'page' : undefined}
                 className={cn(
-                  'rounded-full px-3 py-1.5 text-sm font-medium whitespace-nowrap transition-colors',
+                  'border-b border-transparent pb-1 text-sm font-medium whitespace-nowrap text-menu',
                   active
-                    ? 'bg-primary text-brand-foreground'
-                    : 'text-brand-dark hover:bg-primary/10 hover:text-brand',
+                    ? 'border-dourado text-marrom'
+                    : 'hover:border-dourado hover:text-marrom',
                 )}
               >
                 {item.label}
@@ -85,17 +64,19 @@ export function Header() {
           })}
         </nav>
 
-        <Button asChild className="relative z-10 hidden shrink-0 lg:inline-flex">
-          <a
-            href={whatsappHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackWhatsAppClick('header')}
-          >
-            <MessageCircle className="size-4" aria-hidden="true" />
-            Agendar consulta
-          </a>
-        </Button>
+        <a
+          href={whatsappHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => trackWhatsAppClick('header')}
+          className={cn(
+            layoutBtnClass.contorno,
+            'relative z-10 hidden shrink-0 lg:inline-flex [&_svg]:text-dourado hover:[&_svg]:text-creme',
+          )}
+        >
+          <MessageCircle className="size-4" aria-hidden="true" />
+          Agendar consulta
+        </a>
 
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
           <SheetTrigger asChild>
@@ -109,8 +90,8 @@ export function Header() {
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="gap-0 p-0">
-            <SheetHeader className="border-b border-border/60 px-6 py-5">
-              <SheetTitle className="font-heading text-lg text-brand-dark">
+            <SheetHeader className="border-b border-linha px-6 py-5">
+              <SheetTitle className="font-heading text-lg text-marrom">
                 Menu
               </SheetTitle>
             </SheetHeader>
@@ -120,18 +101,19 @@ export function Header() {
               aria-label="Navegação mobile"
             >
               {NAV_ITEMS.map((item) => {
-                const active = isNavItemActive(hash, item.hash)
+                const active = hash === item.hash
 
                 return (
                   <Link
-                    key={item.hash || 'sobre'}
+                    key={item.hash}
                     to={{ pathname: '/', hash: item.hash }}
                     onClick={() => setMobileOpen(false)}
+                    aria-current={active ? 'page' : undefined}
                     className={cn(
                       'rounded-lg px-4 py-3 text-base font-medium transition-colors',
                       active
-                        ? 'bg-primary text-brand-foreground'
-                        : 'text-brand-dark hover:bg-primary/10 hover:text-brand',
+                        ? 'bg-marrom text-creme'
+                        : 'text-menu hover:bg-areia hover:text-marrom',
                     )}
                   >
                     {item.label}
@@ -140,21 +122,20 @@ export function Header() {
               })}
             </nav>
 
-            <div className="mt-auto border-t border-border/60 p-4">
-              <Button asChild className="w-full">
-                <a
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => {
-                    trackWhatsAppClick('header_mobile')
-                    setMobileOpen(false)
-                  }}
-                >
-                  <MessageCircle className="size-4" aria-hidden="true" />
-                  Agendar consulta
-                </a>
-              </Button>
+            <div className="mt-auto border-t border-linha p-4">
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => {
+                  trackWhatsAppClick('header_mobile')
+                  setMobileOpen(false)
+                }}
+                className={cn(layoutBtnClass.contorno, 'w-full justify-center')}
+              >
+                <MessageCircle className="size-4" aria-hidden="true" />
+                Agendar consulta
+              </a>
             </div>
           </SheetContent>
         </Sheet>

@@ -1,193 +1,135 @@
-import { ArrowRight } from 'lucide-react'
-
 import { OpensInNewTabHint } from '@/components/a11y/OpensInNewTabHint'
-import { GoldBorderCard } from '@/components/GoldBorderCard'
-import { Reveal } from '@/components/Reveal'
-import { Badge } from '@/components/ui/badge'
-import {
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
+import { Etiqueta, Filete, layoutLinkClass } from '@/components/layout/LayoutPrimitives'
 import { trackWhatsAppClick } from '@/lib/analytics'
-import { serviceIcons } from '@/lib/service-icons'
 import {
   buildWhatsAppUrl,
   siteConfig,
   type ServiceCategory,
-  type ServiceSubcategory,
 } from '@/lib/site-config'
 import { cn } from '@/lib/utils'
 
-function ServiceItemsList({ items }: { items: readonly string[] }) {
+const ROMAN = ['I.', 'II.', 'III.', 'IV.', 'V.', 'VI.'] as const
+const SERVICES_EMPHASIS = 'atuação'
+
+function ServicesTitle({ title }: { title: string }) {
+  const index = title.indexOf(SERVICES_EMPHASIS)
+
+  if (index === -1) {
+    return title
+  }
+
   return (
-    <ul className="list-outside list-disc space-y-1 pl-4 text-sm leading-relaxed text-muted-foreground">
+    <>
+      {title.slice(0, index)}
+      <em className="text-dourado">{title.slice(index)}</em>
+    </>
+  )
+}
+
+function AreaList({ items }: { items: readonly string[] }) {
+  return (
+    <ul className="m-0 flex list-none flex-col gap-[9px] p-0">
       {items.map((item) => (
-        <li key={item}>{item}</li>
+        <li
+          key={item}
+          className="relative pl-5 text-[15px] leading-[1.5] text-texto before:absolute before:top-[0.7em] before:left-0 before:h-px before:w-2 before:bg-dourado"
+        >
+          {item}
+        </li>
       ))}
     </ul>
   )
 }
 
-function ServiceItemsGrid({ items }: { items: readonly string[] }) {
-  const midpoint = Math.ceil(items.length / 2)
-  const columns = [items.slice(0, midpoint), items.slice(midpoint)]
-
-  return (
-    <div className="grid gap-5 sm:grid-cols-2">
-      {columns.map((column, index) => (
-        <ServiceItemsList key={index} items={column} />
-      ))}
-    </div>
-  )
-}
-function ServiceSubcategoriesGrid({
-  subcategories,
-}: {
-  subcategories: readonly ServiceSubcategory[]
-}) {
-  return (
-    <div className="grid gap-5 sm:grid-cols-2">
-      {subcategories.map((subcategory) => (
-        <div key={subcategory.title}>
-          <p className="mb-1.5 text-sm font-semibold text-foreground">
-            {subcategory.title}
-          </p>
-          <ServiceItemsList items={subcategory.items} />
-        </div>
-      ))}
-    </div>
-  )
-}
-
-function ServiceCardContent({ category }: { category: ServiceCategory }) {
+function AreaBody({ category }: { category: ServiceCategory }) {
   if (category.subcategories) {
-    return <ServiceSubcategoriesGrid subcategories={category.subcategories} />
+    return category.subcategories.map((subcategory) => (
+      <div key={subcategory.title}>
+        <h4 className="mb-3 font-sans text-xs font-semibold tracking-[0.2em] text-marrom uppercase">
+          {subcategory.title}
+        </h4>
+        <AreaList items={subcategory.items} />
+      </div>
+    ))
   }
 
-  if (category.featured && category.items) {
-    return <ServiceItemsGrid items={category.items} />
+  if (!category.items) {
+    return null
   }
 
-  if (category.items) {
-    return <ServiceItemsList items={category.items} />
-  }
-
-  return null
-}
-
-function ServiceCardLink({ category }: { category: ServiceCategory }) {
-  return (
-    <a
-      href={buildWhatsAppUrl(category.message)}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={`Saiba mais sobre ${category.title}`}
-      onClick={() =>
-        trackWhatsAppClick('services', { serviceId: category.id })
-      }
-      className="mt-5 -my-2 inline-flex items-center gap-1 py-2 text-sm font-semibold text-brand transition-colors hover:text-brand-accent"
-    >
-      Saiba mais
-      <ArrowRight
-        className="size-3.5 transition-transform group-hover:translate-x-0.5"
-        aria-hidden="true"
-      />
-      <OpensInNewTabHint />
-    </a>
+  const midpoint = Math.ceil(category.items.length / 2)
+  const columns = [category.items.slice(0, midpoint), category.items.slice(midpoint)].filter(
+    (column) => column.length > 0,
   )
+
+  return columns.map((column) => (
+    <AreaList key={column[0]} items={column} />
+  ))
 }
 
-function ServiceCard({
+function ServiceArea({
   category,
   index,
 }: {
   category: ServiceCategory
   index: number
 }) {
-  const Icon = serviceIcons[category.id]
+  const numeral = ROMAN[index] ?? `${index + 1}.`
 
   return (
-    <Reveal variant="up" staggerIndex={index} className="h-full">
-      <GoldBorderCard
-        animationIndex={index}
-        featured={category.featured}
-        className="flex h-full flex-col"
-      >
-          <CardHeader
-        className={cn(
-          'flex items-start justify-between gap-3',
-          category.featured
-            ? 'flex-col sm:flex-row sm:items-start'
-            : 'flex-row',
-        )}
-      >
-        <div className="flex items-center gap-2">
-          {Icon && (
-            <Icon
-              className="size-6 shrink-0 text-brand"
-              strokeWidth={1.5}
-              aria-hidden="true"
-            />
-          )}
-          <CardTitle className="font-sans text-lg text-foreground">
-            {category.title}
-          </CardTitle>
-        </div>
-        {category.featured && category.featuredLabel && (
-          <Badge className="shrink-0 rounded-full bg-brand/10 text-brand hover:bg-brand/15">
+    <article className="grid grid-cols-1 gap-7 border-t border-linha py-12 last:border-b min-[900px]:grid-cols-[minmax(220px,320px)_1fr] min-[900px]:gap-12">
+      <div className="flex flex-col gap-3">
+        <span className="font-display text-xl text-dourado italic">{numeral}</span>
+        <h3 className="font-display text-[34px] leading-[1.1] font-medium text-marrom">
+          {category.title}
+        </h3>
+        {category.featuredLabel === 'Principal área' && (
+          <span className="self-start border border-dourado-claro px-2.5 py-1.5 text-[10px] font-semibold tracking-[0.2em] text-dourado-escuro uppercase">
             {category.featuredLabel}
-          </Badge>
+          </span>
         )}
-      </CardHeader>
-      <CardContent className="flex flex-1 flex-col">
-        <p className="text-sm leading-relaxed text-muted-foreground">
-          {category.description}
-        </p>
+        <p className="text-[15px] leading-[1.7] text-texto">{category.description}</p>
+      </div>
 
-        <div className="mt-4 flex-1">
-          <ServiceCardContent category={category} />
-        </div>
-
-        <ServiceCardLink category={category} />
-      </CardContent>
-      </GoldBorderCard>
-    </Reveal>
+      <div className="grid content-start gap-7 min-[520px]:grid-cols-[repeat(auto-fit,minmax(240px,1fr))] min-[520px]:gap-x-10">
+        <AreaBody category={category} />
+        <a
+          href={buildWhatsAppUrl(category.message)}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Saiba mais sobre ${category.title}`}
+          onClick={() => trackWhatsAppClick('services', { serviceId: category.id })}
+          className={cn(layoutLinkClass, 'col-span-full justify-self-start')}
+        >
+          Saiba mais
+          <OpensInNewTabHint />
+        </a>
+      </div>
+    </article>
   )
 }
 
 export function ServicesSection() {
   return (
-    <section
-      id="servicos"
-      className="section-padding bg-background"
-      aria-labelledby="services-heading"
-    >
-      <div className="container-narrow mb-10 sm:mb-12">
-        <Reveal variant="up">
-          <div className="mb-6 flex flex-col items-center space-y-4 text-center">
-          <Badge className="rounded-full bg-brand/10 font-bold text-brand hover:bg-brand/15">
-            Serviços
-          </Badge>
+    <section id="servicos" className="bg-creme" aria-labelledby="services-heading">
+      <div className="container-narrow px-5 py-[72px] sm:px-8 sm:py-[104px]">
+        <div className="mb-14 flex flex-col items-center gap-[18px] text-center">
+          <Etiqueta>Serviços</Etiqueta>
           <h2
             id="services-heading"
-            className="text-section-title font-display mx-auto max-w-2xl text-brand"
+            className="font-display text-[clamp(34px,4vw,48px)] leading-[1.1] font-medium text-marrom"
           >
-            {siteConfig.servicesSection.title}
+            <ServicesTitle title={siteConfig.servicesSection.title} />
           </h2>
-          <p className="mx-auto max-w-2xl leading-relaxed text-foreground">
+          <Filete />
+          <p className="max-w-[640px] text-[17px] leading-[1.7] text-texto">
             {siteConfig.servicesSection.description}
           </p>
         </div>
-        </Reveal>
-      </div>
 
-      <div className="container-narrow">
-        <div className="grid gap-4 sm:gap-6">
-          {siteConfig.serviceCategories.map((category, index) => (
-            <ServiceCard key={category.id} category={category} index={index} />
-          ))}
-        </div>
+        {siteConfig.serviceCategories.map((category, index) => (
+          <ServiceArea key={category.id} category={category} index={index} />
+        ))}
       </div>
     </section>
   )

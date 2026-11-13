@@ -1,15 +1,5 @@
 export type ServiceArea = 'familia' | 'sucessoes' | 'civil'
 
-export interface Testimonial {
-  id: string
-  name: string
-  initials: string
-  context: string
-  quote: string
-  rating: number
-  avatar?: string
-}
-
 export interface ServiceSubcategory {
   title: string
   items: readonly string[]
@@ -51,7 +41,7 @@ export const siteConfig = {
   description:
     'Atuação jurídica estratégica e atendimento humanizado para quem precisa de segurança, clareza e direcionamento em decisões importantes. Atendimento presencial em Florianópolis/SC e online para todo o Brasil.',
   oab: 'OAB/SC 71.645',
-  city: 'Florianópolis, SC',
+  city: 'Florianópolis/SC',
   address: {
     line1: 'R. Gen. Liberato Bittencourt, 1885a, sala 206',
     line2: 'Canto, Florianópolis — SC, 88075-000',
@@ -79,7 +69,6 @@ export const siteConfig = {
     { label: 'Sobre', href: '#sobre' },
     { label: 'Serviços', href: '#servicos' },
     { label: 'Diferenciais', href: '#diferenciais' },
-    { label: 'Depoimentos', href: '#depoimentos' },
     { label: 'Perguntas frequentes', href: '#faq' },
     { label: 'Contato', href: '#contato' },
   ],
@@ -99,11 +88,11 @@ export const siteConfig = {
     'Direito das Sucessões',
   ],
   hero: {
-    label: 'Advocacia em Civil, Família e Sucessões',
+    label: 'Direito Civil · Família · Sucessões',
     headline:
       'Acolhimento e orientação jurídica para proteger os seus direitos.',
     subheadline:
-      'Advogada especializada em Direito Civil, Direito de Família e Sucessões, oferecendo atendimento personalizado, presencial em Florianópolis e online para todo o Brasil.',
+      'Advogada com atuação em Direito Civil, Direito de Família e Sucessões, oferecendo atendimento personalizado, presencial em Florianópolis e online para todo o Brasil.',
     stats: [
       { value: '+10', label: 'Anos de experiência' },
       { value: '+500', label: 'Casos atendidos' },
@@ -119,7 +108,7 @@ export const siteConfig = {
   about: {
     headline: 'Advocacia com proximidade, técnica e respeito à sua história',
     paragraphs: [
-      'Sou advogada com atuação nas áreas de Direito Civil, Direito de Família e Direito das Sucessões, oferecendo assessoria jurídica em situações sensíveis e decisões importantes do cotidiano, como rescisões contratuais, cobranças, conflitos civis, divórcios, definição de guarda, pensão alimentícia, inventários e curatela — com linguagem acessível e estratégia jurídica.',
+      'Sou advogada com atuação nas áreas de Direito Civil, Direito de Família e Direito das Sucessões, oferecendo assessoria jurídica em situações sensíveis e decisões importantes do cotidiano, como rescisões contratuais, cobranças, conflitos civis, divórcios, definição de guarda, pensão alimentícia, inventários e curatela, com linguagem acessível e estratégia jurídica.',
       'Acredito em um atendimento próximo, que escuta antes de orientar. Cada caso é único e merece análise cuidadosa, com transparência sobre caminhos, prazos e expectativas realistas.',
       'Meu compromisso é oferecer segurança jurídica em momentos de incerteza, buscando soluções que preservem direitos e, quando possível, reduzam desgastes desnecessários.',
     ],
@@ -153,7 +142,7 @@ export const siteConfig = {
       id: 'experiencia',
       title: 'Experiência consolidada',
       description:
-        'Mais de 10 anos de experiência jurídica e centenas de casos em Direito Civil, Família e Sucessões — com análise técnica e histórico de resultados.',
+        'Mais de 10 anos de experiência jurídica e centenas de casos em Direito Civil, Família e Sucessões, com análise técnica e histórico de resultados.',
     },
     {
       id: 'modalidade',
@@ -162,51 +151,6 @@ export const siteConfig = {
         'Atendimento presencial em Florianópolis ou por videoconferência para clientes em Santa Catarina e em todo o Brasil.',
     },
   ],
-  testimonialsSection: {
-    title: 'O que dizem os clientes',
-    description:
-      'Relatos de quem buscou orientação jurídica em momentos que exigiam clareza, técnica e acolhimento.',
-    disclaimer:
-      'Depoimentos ilustrativos para apresentação do site. Em breve, avaliações reais pelo Google.',
-  },
-  testimonials: [
-    {
-      id: 'familia-1',
-      name: 'Marina S.',
-      initials: 'MS',
-      context: 'Direito de Família — Florianópolis',
-      quote:
-        'Cheguei perdida no processo de divórcio e guarda. A Layana explicou cada etapa com calma, sem juridiquês, e me ajudou a tomar decisões com mais segurança para mim e para meus filhos.',
-      rating: 5,
-    },
-    {
-      id: 'civil-1',
-      name: 'Carlos A.',
-      initials: 'CA',
-      context: 'Direito Civil — contratos',
-      quote:
-        'Precisava resolver um conflito contratual com urgência. O atendimento foi ágil, objetivo e muito profissional. Senti que meu caso foi analisado com atenção real aos detalhes.',
-      rating: 5,
-    },
-    {
-      id: 'curatela-1',
-      name: 'Fernanda L.',
-      initials: 'FL',
-      context: 'Direito de Família — curatela',
-      quote:
-        'Em um momento delicado da família, a orientação foi humanizada e transparente. Acompanhou todo o processo de curatela com paciência e sempre disponível para tirar dúvidas.',
-      rating: 5,
-    },
-    {
-      id: 'sucessoes-1',
-      name: 'Roberto M.',
-      initials: 'RM',
-      context: 'Direito das Sucessões — inventário',
-      quote:
-        'Conduziu o inventário da minha família com organização e clareza sobre prazos e documentos. A comunicação foi constante e isso fez toda a diferença em um processo tão sensível.',
-      rating: 5,
-    },
-  ] satisfies Testimonial[],
   faq: [
     {
       question: 'Como funciona o primeiro atendimento?',
@@ -284,7 +228,7 @@ export const siteConfig = {
       id: 'civil',
       title: 'Direito Civil',
       description:
-        'Principal área de atuação. Orientação em contratos, responsabilidade civil, direito do consumidor e cobranças, com análise técnica e estratégia para cada caso.',
+        'Orientação em contratos, responsabilidade civil, direito do consumidor e cobranças, com análise técnica e estratégia para cada caso.',
       message: 'Olá, Layana! Gostaria de falar sobre Direito Civil.',
       area: 'civil',
       featured: true,
