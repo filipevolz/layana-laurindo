@@ -42,7 +42,9 @@ export function Header() {
           aria-label="Navegação principal"
         >
           {NAV_ITEMS.map((item) => {
-            const active = hash === item.hash
+            // Binding HTML marks Sobre as current on first paint (empty hash).
+            const active =
+              hash === item.hash || (!hash && item.hash === '#sobre')
 
             return (
               <Link

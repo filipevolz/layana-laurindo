@@ -41,7 +41,7 @@ export const siteConfig = {
   description:
     'Atuação jurídica estratégica e atendimento humanizado para quem precisa de segurança, clareza e direcionamento em decisões importantes. Atendimento presencial em Florianópolis/SC e online para todo o Brasil.',
   oab: 'OAB/SC 71.645',
-  city: 'Florianópolis, SC',
+  city: 'Florianópolis/SC',
   address: {
     line1: 'R. Gen. Liberato Bittencourt, 1885a, sala 206',
     line2: 'Canto, Florianópolis — SC, 88075-000',
