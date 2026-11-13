@@ -8,7 +8,9 @@
     "prebuild": "tsx scripts/sync-index-seo.ts && tsx scripts/generate-sitemap.ts",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:e2e": "playwright test",
+    "test:e2e:install": "playwright install chromium"
   },
   "dependencies": {
     "@fontsource-variable/geist": "^5.2.9",
@@ -35,6 +37,7 @@
   "devDependencies": {
     "@axe-core/cli": "^4.11.3",
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.65.0",
     "@types/node": "^24.12.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
