@@ -1,15 +1,5 @@
 export type ServiceArea = 'familia' | 'sucessoes' | 'civil'
 
-export interface Testimonial {
-  id: string
-  name: string
-  initials: string
-  context: string
-  quote: string
-  rating: number
-  avatar?: string
-}
-
 export interface ServiceSubcategory {
   title: string
   items: readonly string[]
@@ -161,14 +151,6 @@ export const siteConfig = {
         'Atendimento presencial em Florianópolis ou por videoconferência para clientes em Santa Catarina e em todo o Brasil.',
     },
   ],
-  testimonialsSection: {
-    title: 'O que dizem os clientes',
-    description:
-      'Relatos de quem buscou orientação jurídica em momentos que exigiam clareza, técnica e acolhimento.',
-    disclaimer:
-      'Depoimentos ilustrativos para apresentação do site. Em breve, avaliações reais pelo Google.',
-  },
-  testimonials: [] as Testimonial[],
   faq: [
     {
       question: 'Como funciona o primeiro atendimento?',
