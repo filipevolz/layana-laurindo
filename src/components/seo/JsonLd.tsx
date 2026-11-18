@@ -38,13 +38,13 @@ export function JsonLd({ faq, breadcrumbs }: JsonLdProps) {
         streetAddress: siteConfig.address.line1,
         addressLocality: 'Florianópolis',
         addressRegion: 'SC',
-        postalCode: '88075-000',
+        postalCode: '88080-220',
         addressCountry: 'BR',
       },
       geo: {
         '@type': 'GeoCoordinates',
-        latitude: -27.5838617,
-        longitude: -48.5838573,
+        latitude: -27.6086837,
+        longitude: -48.577969,
       },
       areaServed: [
         { '@type': 'City', name: 'Florianópolis' },

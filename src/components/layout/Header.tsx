@@ -33,8 +33,26 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-linha bg-creme">
       <div className="container-narrow flex flex-wrap items-center justify-between gap-6 px-5 py-[22px] sm:px-8">
-        <Link to="/" className="relative z-10 flex items-center">
-          <img src={logo} alt="Layana Laurindo" width={70} height={60} />
+        <Link
+          to="/"
+          className="relative z-10 flex items-center gap-0 text-marrom no-underline"
+        >
+          <img
+            src={logo}
+            alt=""
+            width={70}
+            height={60}
+            className="shrink-0 object-contain"
+            aria-hidden="true"
+          />
+          <span className="leading-tight">
+            <span className="block font-display text-[22px] leading-none font-medium sm:text-[26px]">
+              {siteConfig.name}
+            </span>
+            <span className="mt-[5px] block text-[10px] tracking-[0.22em] text-texto-suave uppercase sm:text-[11px]">
+              {siteConfig.title}
+            </span>
+          </span>
         </Link>
 
         <nav

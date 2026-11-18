@@ -32,7 +32,6 @@ export const siteConfig = {
     locale: 'pt_BR',
     themeColor: '#2D241B',
     updatedAt: '2026-07-13',
-    updatedAtLabel: 'julho de 2026',
   },
   name: 'Layana Laurindo',
   title: 'Advogada',
@@ -43,12 +42,12 @@ export const siteConfig = {
   oab: 'OAB/SC 71.645',
   city: 'Florianópolis/SC',
   address: {
-    line1: 'R. Gen. Liberato Bittencourt, 1885a, sala 206',
-    line2: 'Canto, Florianópolis — SC, 88075-000',
+    line1: 'Rua Miguel Daux, 128',
+    line2: 'Coqueiros, Florianópolis/SC, CEP 88080-220',
     mapsUrl:
-      'https://maps.google.com/?q=R.+Gen.+Liberato+Bittencourt,+1885a+-+Canto,+Florianópolis+-+SC,+88075-000',
+      'https://maps.google.com/?q=Rua+Miguel+Daux,+128,+Coqueiros,+Florianópolis+-+SC,+88080-220',
     mapsEmbedUrl:
-      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3536.311786884208!2d-48.5838573!3d-27.5838617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x952737d8ab3fff19%3A0x11c4430f1bc16fb0!2sR.%20Gen.%20Liberato%20Bittencourt%2C%201885a%20-%20Canto%2C%20Florian%C3%B3polis%20-%20SC%2C%2088075-000!5e0!3m2!1sen!2sbr!4v1781807742303!5m2!1sen!2sbr',
+      'https://maps.google.com/maps?q=Rua+Miguel+Daux,+128,+Coqueiros,+Florianópolis+-+SC,+88080-220&z=16&output=embed',
   },
   whatsapp: '554896364634',
   email: 'layanalaurindo07@gmail.com',
@@ -72,16 +71,6 @@ export const siteConfig = {
     { label: 'Perguntas frequentes', href: '#faq' },
     { label: 'Contato', href: '#contato' },
   ],
-  usefulLinks: [
-    {
-      label: 'Tabela de Honorários OAB/SC',
-      href: 'https://oab-sc.org.br/api/files/file/1_32_67cb299793cd0.pdf',
-    },
-    {
-      label: 'Estatuto da Advocacia',
-      href: 'https://www.planalto.gov.br/ccivil_03/leis/l8906.htm',
-    },
-  ],
   specialties: [
     'Direito Civil',
     'Direito de Família',
@@ -95,7 +84,7 @@ export const siteConfig = {
       'Advogada com atuação em Direito Civil, Direito de Família e Sucessões, oferecendo atendimento personalizado, presencial em Florianópolis e online para todo o Brasil.',
     stats: [
       { value: '+10', label: 'Anos de experiência' },
-      { value: '+500', label: 'Casos atendidos' },
+      { value: '+1000', label: 'Casos atendidos' },
       { value: '3', label: 'Áreas de atuação' },
       { value: '24h', label: 'Retorno via WhatsApp' },
     ],
