@@ -76,46 +76,36 @@ export function Footer() {
   return (
     <footer className="bg-creme pt-20 pb-[max(40px,env(safe-area-inset-bottom))] text-sm text-texto">
       <div className="container-narrow px-5 sm:px-8">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 min-[900px]:grid-cols-[1.4fr_repeat(3,1fr)_1.3fr]">
-          <FooterColumn className="sm:col-span-2 min-[900px]:col-span-1">
-            <Link to="/" className="inline-flex items-center gap-4 text-marrom no-underline">
-              <img
-                src={siteConfig.images.logo}
-                alt=""
-                width={52}
-                height={52}
-                className="size-[52px] shrink-0 object-contain"
-                aria-hidden="true"
-              />
-              <span className="leading-tight">
-                <span className="block font-display text-[26px] leading-none font-medium">
-                  {siteConfig.name}
-                </span>
-                <span className="mt-[5px] block text-[11px] tracking-[0.22em] text-texto-suave uppercase">
-                  {siteConfig.title}
-                </span>
-              </span>
-            </Link>
-            <p className="mt-[18px] leading-[1.7]">{siteConfig.description}</p>
-            <p className="mt-[18px]">{siteConfig.oab}</p>
-          </FooterColumn>
-
-          <FooterColumn title="Menu">
-            <FooterLinkList items={siteConfig.nav} />
-          </FooterColumn>
-
-          <FooterColumn title="Áreas de atuação">
-            <FooterLinkList items={areaLinks} />
-          </FooterColumn>
-
-          <FooterColumn title="Links úteis">
-            <FooterLinkList
-              items={siteConfig.usefulLinks.map((link) => ({
-                ...link,
-                external: true,
-              }))}
+        <FooterColumn>
+          <Link to="/" className="inline-flex items-center gap-0 text-marrom no-underline">
+            <img
+              src={siteConfig.images.logo}
+              alt=""
+              width={70}
+              height={60}
+              className="h-[60px] w-[70px] shrink-0 object-contain"
+              aria-hidden="true"
             />
-          </FooterColumn>
+            <span className="leading-tight">
+              <span className="block font-display text-[26px] leading-none font-medium">
+                {siteConfig.name}
+              </span>
+              <span className="mt-[5px] block text-[11px] tracking-[0.22em] text-texto-suave uppercase">
+                {siteConfig.title}
+              </span>
+            </span>
+          </Link>
+        </FooterColumn>
+
+        <div className="mt-8 grid grid-cols-1 gap-10 sm:grid-cols-2">
+          <div className="flex flex-col gap-10">
+            <FooterColumn title="Menu">
+              <FooterLinkList items={siteConfig.nav} />
+            </FooterColumn>
+            <FooterColumn title="Áreas de atuação">
+              <FooterLinkList items={areaLinks} />
+            </FooterColumn>
+          </div>
 
           <FooterColumn title="Contato">
             <dl className="m-0 flex flex-col gap-3.5">
@@ -195,7 +185,7 @@ export function Footer() {
           </FooterColumn>
         </div>
 
-        <div className="mt-14 h-[280px] overflow-hidden border border-linha bg-creme-claro">
+        <div className="mt-8 h-[280px] overflow-hidden border border-linha bg-creme-claro">
           <iframe
             src={siteConfig.address.mapsEmbedUrl}
             title="Localização do escritório no mapa"
@@ -206,11 +196,10 @@ export function Footer() {
           />
         </div>
 
-        <div className="mt-10 flex flex-col gap-2 border-t border-linha pt-6 text-xs leading-relaxed text-texto-suave">
+        <div className="mt-6 flex flex-col gap-2 border-t border-linha pt-6 text-xs leading-relaxed text-texto-suave">
           <span>
             © {year} {siteConfig.name}. Todos os direitos reservados.
           </span>
-          <span>Atualizado em {siteConfig.seo.updatedAtLabel}.</span>
           <span>
             Este site tem caráter informativo e não substitui consulta jurídica personalizada. O
             conteúdo não configura promessa de resultado.
